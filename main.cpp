@@ -126,11 +126,6 @@ int main(int argc, char *argv[])
     UIBasePlatformFrame w;
     /* 设置背景图片 */
 
-
-
-
-
-
     w.show();
 
 
