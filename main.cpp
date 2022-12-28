@@ -9,6 +9,11 @@
 #include <QtGlobal>
 #include <QDesktopServices>
 #include <QUrl>
+#include<QSettings>
+#include<QFileInfo>
+#include<QDir>
+
+#include "autorun.h"   //开机自动运行
 QSystemTrayIcon *trayIcon;
 
 // 打开点击事件处理器
@@ -34,6 +39,7 @@ int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
 
+
 #if (QT_VERSION <= QT_VERSION_CHECK(5,0,0))
 #if _MSC_VER
     QTextCodec *codec = QTextCodec::codecForName("gbk");
@@ -47,6 +53,7 @@ int main(int argc, char *argv[])
     QTextCodec *codec = QTextCodec::codecForName("utf-8");
     QTextCodec::setCodecForLocale(codec);
 #endif
+    autoRun();//设置开机自动运行
 
 //    QFile fread;
 //    fread.setFileName(":/qss/psblack.css");
@@ -76,29 +83,38 @@ int main(int argc, char *argv[])
 //    }
 
    //创建右键菜单
-   QMenu menu;
-   QAction openAct("打开业务系统");
-   QAction quitAct("退出");
+//   QMenu menu;
 
-   menu.addAction(&openAct);
-   menu.addAction(&quitAct);
-   // 菜单绑定事件回调
-   QObject::connect(&quitAct, &QAction::triggered, qApp, &handleQuit);
-   QObject::connect(&openAct, &QAction::triggered, qApp, &handleOpen);
+//   QAction openAct("打开业务系统");
+//   QAction quitAct("退出");
+
+//   menu.addAction(&openAct);
+//   menu.addAction(&quitAct);
+//   // 菜单绑定事件回调
+//   QObject::connect(&quitAct, &QAction::triggered, qApp, &handleQuit);
+//   QObject::connect(&openAct, &QAction::triggered, qApp, &handleOpen);
 
 
 
-   // 加载图标
-   QPixmap oPixmap(32, 32);
-   oPixmap.load(":/image/icon.png");
-   QIcon qIcon(oPixmap);
+//   // 加载图标
+//   QPixmap oPixmap(32, 32);
+//   oPixmap.load(":/image/icon.png");
+//   QIcon qIcon(oPixmap);
 
-   // 创建并配置状态栏icon
-   trayIcon = new QSystemTrayIcon(qIcon);
-   trayIcon->setContextMenu(&menu);
-   trayIcon->setToolTip("Some thing");
-   trayIcon->setVisible(true);
+//   // 创建并配置状态栏icon
+//   trayIcon = new QSystemTrayIcon(qIcon);
+//   trayIcon->setContextMenu(&menu);
+//   // 给托盘设置ICON
+//   trayIcon->setIcon(QIcon(":/image/wx.png"));
+//    // 设置托盘鼠标悬浮显示内容
+//   trayIcon->setToolTip("接收处置综合服务保障");
+//   trayIcon->setVisible(true);
 
+   // 创建两个菜单事件
+//   QAction *actShowWindow = new QAction("打开主界面",this);
+//   connect(actShowWindow,&QAction::triggered,[this]{this->show();});
+//   QAction *actExit = new QAction("退出",this);
+//   connect(actExit,&QAction::triggered,[this]{this->close();});
 
 
 
@@ -120,3 +136,4 @@ int main(int argc, char *argv[])
 
     return a.exec();
 }
+

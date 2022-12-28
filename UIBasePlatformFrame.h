@@ -32,6 +32,10 @@
 #include<QTableWidgetItem>
 #include<user-win-dialog.h>
 #include"creditsql.h"
+#include <QSystemTrayIcon>
+#include <QIcon>
+#include<data-transfer-dialog.h>
+
 
 QT_BEGIN_NAMESPACE
 class QComboBox;
@@ -105,13 +109,19 @@ private:
 
     UserWinDialog userWinDialog;
 
+    DataTransferDialog dataTransferDialog;
 
 
     void Tian(QList<PerInfo> l);
     void TianU(QList<UserInfo> u);
     //IP
     void showRightInfo();
+    //托盘
+    QSystemTrayIcon *stystemIcon;
 private slots:
+    void send();
+    void dataTransferWin();
+    void toTray();
     void display_text();
     void initForm();
     void buttonClick();

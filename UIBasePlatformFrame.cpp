@@ -4,7 +4,10 @@
 #include "ui_UIBasePlatformFrame.h"
 #include "iconhelper.h"
 #include <QDateTime>
-
+#include <QSystemTrayIcon>
+#include <QMenu>
+#include <QAction>
+#include <QDebug>
 
 UIBasePlatformFrame::UIBasePlatformFrame(QWidget *parent) :
     QWidget(parent),
@@ -14,6 +17,8 @@ UIBasePlatformFrame::UIBasePlatformFrame(QWidget *parent) :
     m_prtCreSql(nullptr)
 {
     ui->setupUi(this);
+    //系统托盘
+    this->toTray();
     //跑马灯start
     timer = new QTimer();
     this->width = ui->label->size().width();
@@ -86,6 +91,7 @@ UIBasePlatformFrame::UIBasePlatformFrame(QWidget *parent) :
 
 }
 
+
 UIBasePlatformFrame::~UIBasePlatformFrame()
 {
     delete ui;
@@ -94,6 +100,88 @@ void UIBasePlatformFrame::initResize()
 {
 
 }
+//托盘
+void UIBasePlatformFrame::toTray(){
+    // 隐藏程序主窗口
+    this->hide();
+    // 新建QSystemTrayIcon对象
+    QSystemTrayIcon *tray = new QSystemTrayIcon(this);
+    // 新建托盘要显示的icon
+    QIcon icon = QIcon(":/image/wx.png");
+    // 给托盘设置ICON
+    tray->setIcon(icon);
+    // 设置托盘鼠标悬浮显示内容
+    tray->setToolTip("接收处置综合服务保障");
+    // 创建两个菜单事件
+    QAction *actShowWindow = new QAction("数据交互",this);
+    connect(actShowWindow,&QAction::triggered,this,&UIBasePlatformFrame::dataTransferWin);
+    QAction *actExit = new QAction("退出",this);
+    connect(actExit,&QAction::triggered,[this]{this->close();});
+
+
+
+
+
+    // 创建菜单
+    QMenu *menu = new QMenu(this);
+    menu->setProperty("class", "blackMenu");
+    QAction* actionMax = new QAction("最大化");
+    QAction* actionMin = new QAction("最小化");
+    menu->addAction(actionMax);
+    menu->addAction(actionMin);
+    connect(actionMax, &QAction::triggered, this, &UIBasePlatformFrame::showMaximized);
+    connect(actionMin, &QAction::triggered, this, &UIBasePlatformFrame::showMinimized);
+
+    connect(ui->pushButton, &QPushButton::clicked, this, &UIBasePlatformFrame::send);
+
+
+    // 新增1个菜单
+    menu->addAction(actShowWindow);
+    // 增加分隔符
+    menu->addSeparator();
+    // 新增1个菜单
+    menu->addAction(actExit);
+    // 给托盘加入菜单
+    tray->setContextMenu(menu);
+    // 给托盘绑定事件
+    connect(tray,&QSystemTrayIcon::activated,[this](QSystemTrayIcon::ActivationReason action) {
+        switch(action){
+        case QSystemTrayIcon::Unknown:
+            qDebug() << "1未知事件";
+            break;
+        case QSystemTrayIcon::Context:
+            qDebug() << "2右键点击了图标（请求托盘上下文）";
+            break;
+        case QSystemTrayIcon::Trigger:
+            qDebug() << "3单击了图标";
+            break;
+        case QSystemTrayIcon::DoubleClick:
+            qDebug() << "4双击了图标（双击也会触发单击）";
+            break;
+        case QSystemTrayIcon::MiddleClick:
+            qDebug() << "5鼠标中间点击了图标";
+            break;
+        }
+    });
+    // 显示托盘
+    tray->show();
+    // 发送通知消息
+    tray->showMessage("放入托盘通知",
+                      "程序已放入托盘，右键可查看菜单",
+                      QSystemTrayIcon::Information, // 显示信息图标(NoIcon/Information/Warning/Critical)
+                      1000);
+}
+//托盘
+void UIBasePlatformFrame::send()
+{
+    stystemIcon->showMessage(tr("提示"), "你点击了这个按钮！", QIcon(tr(":/hello")), 10000);
+}
+//数据交互
+void UIBasePlatformFrame::dataTransferWin(){
+    /** 弹出框 **/
+    dataTransferDialog.exec();
+}
+
 void UIBasePlatformFrame::Time()
 {
     QTimer *timer = new QTimer(this);
