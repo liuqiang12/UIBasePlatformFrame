@@ -23,7 +23,10 @@
         <file>image/up.png</file>
         <file>image/up2.png</file>
         <file>image/yq.png</file>
-        <file>image/icon.ico</file>
         <file>image/icon.png</file>
+        <file>image/wx.png</file>
+        <file>image/wx2.png</file>
+        <file>image/icon.ico</file>
+        <file>image/transfer.png</file>
     </qresource>
 </RCC>
