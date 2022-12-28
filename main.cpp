@@ -28,10 +28,6 @@ void handleQuit(){
 }
 
 
-
-
-
-
 /**
  * http://www.fontawesome.com.cn/cheatsheet/
  */
@@ -39,6 +35,7 @@ int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
 
+    QTextCodec::setCodecForLocale(QTextCodec::codecForName("UTF-8"));
 
 #if (QT_VERSION <= QT_VERSION_CHECK(5,0,0))
 #if _MSC_VER
@@ -50,8 +47,7 @@ int main(int argc, char *argv[])
     QTextCodec::setCodecForCStrings(codec);
     QTextCodec::setCodecForTr(codec);
 #else
-    QTextCodec *codec = QTextCodec::codecForName("utf-8");
-    QTextCodec::setCodecForLocale(codec);
+
 #endif
     autoRun();//设置开机自动运行
 

@@ -1240,7 +1240,7 @@ void UIBasePlatformFrame::on_pushButton_4_clicked()
         l.append(info);
    }
     m_prtCreSql->addPer(l);
-    updateTableWidget4();
+//    updateTableWidget4();
 }
 
 void UIBasePlatformFrame::updateTableWidget4()
@@ -1276,7 +1276,7 @@ void UIBasePlatformFrame::updateTableWidget4()
         ui->tableWidget->setItem(j,5,new QTableWidgetItem(lPer[i].leader_politics));
         ui->tableWidget->setItem(j,6,new QTableWidgetItem(lPer[i].leader_phone));
         ui->tableWidget->setItem(j,7,new QTableWidgetItem(lPer[i].leader_unit));
-        ui->tableWidget->setItem(j,8,new QTableWidgetItem(lPer[i].email));
+//        ui->tableWidget->setItem(j,8,new QTableWidgetItem(lPer[i].email));
     }
 
 
