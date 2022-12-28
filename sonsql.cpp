@@ -131,8 +131,7 @@ bool sonSql::addUser(QList<UserInfo> l)
                 arg(info.address);
         sql.exec(strSql);
     }
-    son_db.commit();
-    return true;
+
 }
 
 bool sonSql::delUser(int id)

@@ -28,5 +28,7 @@
         <file>image/wx2.png</file>
         <file>image/icon.ico</file>
         <file>image/transfer.png</file>
+        <file>trayButton.css</file>
+        <file>image/dataTransfer.png</file>
     </qresource>
 </RCC>
