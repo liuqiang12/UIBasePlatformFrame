@@ -781,52 +781,63 @@ void UIBasePlatformFrame::init_tableWidget_4()
 {
     ui->tableWidget_4->clearContents();
     ui->tableWidget_4->clear();
-    ui->tableWidget_4->setSpan(0, 0, 2, 1);
-    ui->tableWidget_4->setSpan(0, 1, 2, 1);
-    ui->tableWidget_4->setSpan(0, 2, 1, 5);
-    ui->tableWidget_4->setSpan(0, 7, 1, 5);
-    ui->tableWidget_4->setSpan(0, 12, 2, 1);
-    ui->tableWidget_4->setSpan(0, 13, 2, 1);
-    ui->tableWidget_4->setItem(0, 0, new QTableWidgetItem(QStringLiteral("组别码")));
+    ui->tableWidget_4->setSpan(0, 0, 2, 1);//序号
+    ui->tableWidget_4->setSpan(0, 1, 2, 1);//ID
+    ui->tableWidget_4->setSpan(0, 2, 2, 1);//组别码
+    ui->tableWidget_4->setSpan(0, 3, 2, 1);//接收小组
+    ui->tableWidget_4->setSpan(0, 4, 1, 5);//组长
+    ui->tableWidget_4->setSpan(0, 9, 1, 5);//副组长
+    ui->tableWidget_4->setSpan(0, 14, 2, 1);
+    ui->tableWidget_4->setSpan(0, 15, 2, 1);
+
+
+    ui->tableWidget_4->setItem(0, 0, new QTableWidgetItem(QStringLiteral("序号")));
     ui->tableWidget_4->item(0,0)->setTextAlignment(Qt::AlignCenter);
     ui->tableWidget_4->item(0,0)->setFlags(Qt::ItemIsEnabled);
-    ui->tableWidget_4->setItem(0, 1, new QTableWidgetItem(QStringLiteral("接收小组")));
+    ui->tableWidget_4->setItem(0, 1, new QTableWidgetItem(QStringLiteral("ID")));
     ui->tableWidget_4->item(0,1)->setTextAlignment(Qt::AlignCenter);
     ui->tableWidget_4->item(0,1)->setFlags(Qt::ItemIsEnabled);
 
-    ui->tableWidget_4->setItem(0, 2, new QTableWidgetItem(QStringLiteral("组长")));
+    ui->tableWidget_4->setItem(0, 2, new QTableWidgetItem(QStringLiteral("组别码")));
     ui->tableWidget_4->item(0,2)->setTextAlignment(Qt::AlignCenter);
     ui->tableWidget_4->item(0,2)->setFlags(Qt::ItemIsEnabled);
+    ui->tableWidget_4->setItem(0, 3, new QTableWidgetItem(QStringLiteral("接收小组")));
+    ui->tableWidget_4->item(0,3)->setTextAlignment(Qt::AlignCenter);
+    ui->tableWidget_4->item(0,3)->setFlags(Qt::ItemIsEnabled);
 
-    ui->tableWidget_4->setItem(1, 2, new QTableWidgetItem(QStringLiteral("姓名")));
-    ui->tableWidget_4->setItem(1, 3, new QTableWidgetItem(QStringLiteral("性别")));
-    ui->tableWidget_4->setItem(1, 4, new QTableWidgetItem(QStringLiteral("政治面貌")));
-    ui->tableWidget_4->setItem(1, 5, new QTableWidgetItem(QStringLiteral("联系电话")));
-    ui->tableWidget_4->setItem(1, 6, new QTableWidgetItem(QStringLiteral("原单位名称")));
-    for (int i = 2; i<7; i++)
+    ui->tableWidget_4->setItem(0, 4, new QTableWidgetItem(QStringLiteral("组长")));
+    ui->tableWidget_4->item(0,4)->setTextAlignment(Qt::AlignCenter);
+    ui->tableWidget_4->item(0,4)->setFlags(Qt::ItemIsEnabled);
+
+    ui->tableWidget_4->setItem(1, 4, new QTableWidgetItem(QStringLiteral("姓名")));
+    ui->tableWidget_4->setItem(1, 5, new QTableWidgetItem(QStringLiteral("性别")));
+    ui->tableWidget_4->setItem(1, 6, new QTableWidgetItem(QStringLiteral("政治面貌")));
+    ui->tableWidget_4->setItem(1, 7, new QTableWidgetItem(QStringLiteral("联系电话")));
+    ui->tableWidget_4->setItem(1, 8, new QTableWidgetItem(QStringLiteral("原单位名称")));
+    for (int i = 4; i<9; i++)
     {
         ui->tableWidget_4->item(1,i)->setTextAlignment(Qt::AlignCenter);
         ui->tableWidget_4->item(1,i)->setFlags(Qt::ItemIsEnabled);
     }
 
-    ui->tableWidget_4->setItem(0, 7, new QTableWidgetItem(QStringLiteral("副组长")));
-    ui->tableWidget_4->item(0,7)->setTextAlignment(Qt::AlignCenter);
-    ui->tableWidget_4->item(0,7)->setFlags(Qt::ItemIsEnabled);
+    ui->tableWidget_4->setItem(0, 9, new QTableWidgetItem(QStringLiteral("副组长")));
+    ui->tableWidget_4->item(0,9)->setTextAlignment(Qt::AlignCenter);
+    ui->tableWidget_4->item(0,9)->setFlags(Qt::ItemIsEnabled);
 
-    ui->tableWidget_4->setItem(1, 7, new QTableWidgetItem(QStringLiteral("姓名")));
-    ui->tableWidget_4->setItem(1, 8, new QTableWidgetItem(QStringLiteral("性别")));
-    ui->tableWidget_4->setItem(1, 9, new QTableWidgetItem(QStringLiteral("政治面貌")));
-    ui->tableWidget_4->setItem(1, 10, new QTableWidgetItem(QStringLiteral("联系电话")));
-    ui->tableWidget_4->setItem(1, 11, new QTableWidgetItem(QStringLiteral("原单位名称")));
-    for (int i = 7; i<12; i++)
+    ui->tableWidget_4->setItem(1, 9, new QTableWidgetItem(QStringLiteral("姓名")));
+    ui->tableWidget_4->setItem(1, 10, new QTableWidgetItem(QStringLiteral("性别")));
+    ui->tableWidget_4->setItem(1, 11, new QTableWidgetItem(QStringLiteral("政治面貌")));
+    ui->tableWidget_4->setItem(1, 12, new QTableWidgetItem(QStringLiteral("联系电话")));
+    ui->tableWidget_4->setItem(1, 13, new QTableWidgetItem(QStringLiteral("原单位名称")));
+    for (int i = 9; i<14; i++)
     {
         ui->tableWidget_4->item(1,i)->setTextAlignment(Qt::AlignCenter);
         ui->tableWidget_4->item(1,i)->setFlags(Qt::ItemIsEnabled);
     }
 
-    ui->tableWidget_4->setItem(0, 12, new QTableWidgetItem(QStringLiteral("人员编制")));
-    ui->tableWidget_4->setItem(0, 13, new QTableWidgetItem(QStringLiteral("备注")));
-    for (int i = 12; i<14; i++)
+    ui->tableWidget_4->setItem(0, 14, new QTableWidgetItem(QStringLiteral("人员编制")));
+    ui->tableWidget_4->setItem(0, 15, new QTableWidgetItem(QStringLiteral("备注")));
+    for (int i = 14; i<16; i++)
     {
         ui->tableWidget_4->item(0,i)->setTextAlignment(Qt::AlignCenter);
         ui->tableWidget_4->item(0,i)->setFlags(Qt::ItemIsEnabled);
@@ -840,22 +851,7 @@ void UIBasePlatformFrame::init_tableWidget_4()
     ui->tableWidget_4->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);    //x先自适应宽度
     ui->tableWidget_4->horizontalHeader()->setSectionResizeMode(0, QHeaderView::ResizeToContents);     //然后设置要根据内容使用宽度的列
     ui->tableWidget_4->setAlternatingRowColors(true);
-//    auto cnt =m_ptrrtSql->getPerCnt();
-//    ui->lb_cnt->setText(QString("总数:%1").arg(cnt));
-//    QList<PerInfo> lPer=m_ptrrtSql->getPagePer(0,cnt);
-//    ui->tableWidget->setRowCount(cnt);
-//    for(int i=0; i<lPer.size();i++)
-//    {
-//        ui->tableWidget->setItem(i,0,new QTableWidgetItem(QString::number(i)));
-//        ui->tableWidget->setItem(i,1,new QTableWidgetItem(QString::number(lPer[i].id)));
-//        ui->tableWidget->setItem(i,2,new QTableWidgetItem(lPer[i].name));
-//        ui->tableWidget->setItem(i,3,new QTableWidgetItem(lPer[i].gender));
-//        ui->tableWidget->setItem(i,4,new QTableWidgetItem(QString::number(lPer[i].age)));
-//        ui->tableWidget->setItem(i,5,new QTableWidgetItem(lPer[i].school));
-//        ui->tableWidget->setItem(i,6,new QTableWidgetItem(lPer[i].time));
-//        ui->tableWidget->setItem(i,7,new QTableWidgetItem(lPer[i].phone));
-//        ui->tableWidget->setItem(i,8,new QTableWidgetItem(lPer[i].email));
-//    }
+
 }
 
 void UIBasePlatformFrame::on_btn_add_clicked()
@@ -1119,109 +1115,6 @@ void UIBasePlatformFrame::on_pushButton_clicked()
     }
 }
 
-
-
-//void UIBasePlatformFrame::bing()
-//{
-//    //添加一条曲线
-//    //向绘图区域QCustomPlot(从widget提升来的)添加一条曲线
-//    ui->myCustomPlot->addGraph();
-//    //设置画笔
-//    ui->myCustomPlot->graph(0)->setPen(QPen(Qt::blue));
-//    //设置画刷,曲线和X轴围成面积的颜色
-//    ui->myCustomPlot->graph(0)->setBrush(QBrush(QColor(255,255,0)));
-////    //设置右上角图形标注名称
-//    ui->myCustomPlot->graph(0)->setName("曲线");
-////    //设置坐标轴标签名称
-////    ui->myCustomPlot->xAxis->setLabel("x");
-////    ui->myCustomPlot->yAxis->setLabel("y");
-
-////    //设置坐标轴显示范围,否则我们只能看到默认的范围
-//    ui->myCustomPlot->xAxis->setRange(0,60);
-//    ui->myCustomPlot->yAxis->setRange(0,5000);
-//}
-
-//void UIBasePlatformFrame::pain()
-//{
-//    //生成模拟数据
-//    arrX.append(arrX.count());
-//    arrY.append(qrand()%4096);
-
-//    //传入数据，setData的两个参数类型为double
-//    ui->myCustomPlot->graph(0)->setData(arrX,arrY);
-//    //曲线重绘
-//    ui->myCustomPlot->replot();
-//}
-
-////初始化图表
-//void UIBasePlatformFrame::initChart()
-//{
-//    //设置表头
-////    ui->widget_4->size();
-////    qDebug()<<
-//    QSize s=ui->widget_4->frameSize();
-////    int h=ui->widget_4->size().height();
-////    int w=ui->widget_4->size().width();
-//    charted = new chart(ui->widget_4,"历史数据");
-//    //设置坐标系
-//    charted->setAxis("X轴",0,100,11, "Y轴",0,20,11);
-//    //设置离散点数据
-////    charted->resize(s);
-//    QList<QPointF> pointlist = {QPointF(0,1), QPointF(10,2), QPointF(20,4), QPointF(30,8), QPointF(40,16), \
-//                                QPointF(50,16), QPointF(60,8), QPointF(70,4), QPointF(80,2), QPointF(90,1),};
-//    //绘制
-//    charted->buildChart(pointlist);
-//    //添加一个布局
-//    QHBoxLayout *pHLayout = new QHBoxLayout(ui->widget_4);
-//    //将chart添加到布局中
-//    pHLayout->addWidget(charted);
-////    ui->widget_4->scaled(width,height);
-//    chartL->setTheme(QtCharts::QChart::ChartThemeBlueCerulean);//设置主题
-
-
-//}
-//void UIBasePlatformFrame::initLine()
-//{
-//    chartL=new QChart();
-//    chartView = new QChartView(chartL,ui->widget_6); //画布
-//    chartL = chartView->chart();//画笔
-//    series = new QLineSeries();//折线数据
-//    QSize s=ui->widget_6->size();
-//    chartView->setRubberBand(QChartView::NoRubberBand);  //矩形缩放
-//    chartView->setRenderHint(QPainter::Antialiasing);//抗锯齿
-//    chartView->resize(s);   //画布大小
-//    chartView->setContentsMargins(0,0,0,0);
-//    for(int i = 0; i < 100; i++)
-//    {
-//        series->append(i, sin(0.6f*i));
-//    }
-//    chartL->addSeries(series);
-//    chartL->createDefaultAxes();//基于已经添加的series创建默认坐标轴
-
-
-////    chartView->setBackgroundBrush(Qt::green);
-//    chartL->setTheme(QtCharts::QChart::ChartThemeBlueCerulean);//设置主题
-//    chartL->legend()->hide();//隐藏图例
-
-
-////    this->setCentralWidget(chartView)
-////    ui->widget_6->
-//    //设置x坐标轴
-//        axisX = new QValueAxis;
-//        axisX->setRange(0, 100);  //范围
-//        axisX->setLabelFormat("%d"); //图例的格式  %d为十进制显示
-//        axisX->setGridLineVisible(true);//网格
-//        axisX->setTickCount(10);   //主要刻度
-//        axisX->setMinorTickCount(5);//小刻度
-//        axisX->setTitleText("time/(s)");//标题
-
-//}
-
-
-
-
-
-
 /**
  * 双击 简单模板列表 弹出框触发事件
  * @brief UIBasePlatformFrame::on_tableWidget_cellDoubleClicked
@@ -1277,50 +1170,133 @@ void UIBasePlatformFrame::on_tableWidget_2_itemDoubleClicked(QTableWidgetItem *i
 
 }
 
+//2022.12.28更改
+int generateRandomNumber()
+{
+    qsrand(QTime(0,0,0).secsTo(QTime::currentTime()));
+    int test =qrand()%10;
+    return test;
+}
 void UIBasePlatformFrame::on_pushButton_4_clicked()
 {
-//    QList<CreInfo> l;
-//    for(int i=0;i<m_lNames.size();i++)
-//    {
-////        QString group_id;
-////        QString group_name;
-////        QString leader_name;
-////        QString leader_gender;
-////        QString leader_politics;
-////        QString leader_phone;
-////        QString leader_unit;
-////        QString deputy_name;
-////        QString deputy_gender;
-////        QString deputy_politics;
-////        QString deputy_phone;
-////        QString deputy_unit;
-////        QString staffing;
-////        QString remark;
-////        CreInfo info;
-//        info.group_id="N2022"+QString(i);
-//        info.name=m_lNames[i];
-//        if(i%3)
-//        {
-//           info.age=16;
-//           info.gender="男";
-//        };
-//        if(i%2)
-//        {
-//            info.age=17;
-//            info.gender="女";
-//        };
-//        if(i%7)
-//        {
-//            info.age=18;
-//            info.gender="男";
-//        };
-//        info.time="2022.7.1";
-//        info.school="第一中学";
-//        info.phone="12999999"+QString::number(i);
-//        info.email=m_lNames[i]+"@qq.com";
-////        l.append(info);
-//   }
-//   m_prtCreSql->addPer(l);
-//   updateTable();
+    QList<CreInfo> l;
+
+    for(int i=0;i<m_lNames.size();i++)
+    {
+        CreInfo info;
+        info.group_id="N2022"+QString::number(i);
+        info.group_name="N2022";
+        info.leader_name=m_lNames[i];
+        if(i%3)
+        {
+           info.leader_politics="团员";
+           info.leader_gender="男";
+
+
+        };
+        if(i%2)
+        {
+            info.leader_politics="群众";
+            info.leader_gender="女";
+
+        };
+        if(i%7)
+        {
+            info.leader_politics="党员";
+            info.leader_gender="女";
+
+
+
+        };
+        info.leader_unit="中国融通资源开发有限公司";
+        info.leader_phone="12999999"+QString::number(i);
+
+
+        if(i%3)
+        {
+           info.deputy_name=m_lNames[i];
+           info.deputy_politics="团员";
+           info.deputy_gender="女";
+           info.deputy_phone="138888"+QString::number(i);
+
+        };
+        if(i%2)
+        {
+            info.deputy_name=m_lNames[i];
+            info.deputy_politics="党员";
+            info.deputy_gender="男";
+            info.deputy_phone="138888"+QString::number(i);
+        };
+        if(i%7)
+        {
+            info.deputy_name=m_lNames[i];
+            info.deputy_politics="群众";
+            info.deputy_gender="女";
+            info.deputy_phone="138888"+QString::number(i);
+        };
+        info.deputy_unit="中国融通资源开发有限公司";
+        info.staffing=generateRandomNumber();
+
+        l.append(info);
+   }
+    m_prtCreSql->addPer(l);
+    updateTableWidget4();
 }
+
+void UIBasePlatformFrame::updateTableWidget4()
+{
+    auto cnt =m_prtCreSql->getPerCnt();
+    ui->label_48->setText(QString("总数:%1").arg(cnt));
+    QList<CreInfo> lPer=m_prtCreSql->getPagePer(0,cnt);
+    ui->tableWidget_4->setRowCount(cnt);
+    for(int i=0; i<lPer.size();i++)
+    {
+        int j=i+2;
+//        arg(info.group_id).
+//        arg(info.group_name).
+//        arg(info.leader_name).
+//        arg(info.leader_gender).
+//        arg(info.leader_politics).
+//        arg(info.leader_phone).
+//        arg(info.leader_unit).
+//        arg(info.deputy_name).
+//        arg(info.deputy_gender).
+//        arg(info.deputy_politics).
+//        arg(info.deputy_phone).
+//        arg(info.deputy_unit).
+//        arg(info.staffing).
+
+
+//        arg(info.remark);
+        ui->tableWidget->setItem(j,0,new QTableWidgetItem(QString::number(i)));
+        ui->tableWidget->setItem(j,1,new QTableWidgetItem(QString::number(lPer[i].id)));
+        ui->tableWidget->setItem(j,2,new QTableWidgetItem(lPer[i].group_id));
+        ui->tableWidget->setItem(j,3,new QTableWidgetItem(lPer[i].group_name));
+        ui->tableWidget->setItem(j,4,new QTableWidgetItem(lPer[i].leader_gender));
+        ui->tableWidget->setItem(j,5,new QTableWidgetItem(lPer[i].leader_politics));
+        ui->tableWidget->setItem(j,6,new QTableWidgetItem(lPer[i].leader_phone));
+        ui->tableWidget->setItem(j,7,new QTableWidgetItem(lPer[i].leader_unit));
+        ui->tableWidget->setItem(j,8,new QTableWidgetItem(lPer[i].email));
+    }
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 

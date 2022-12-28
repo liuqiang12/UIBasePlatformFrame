@@ -103,6 +103,7 @@ private:
     void updateTable();
     void UpdateTable();
     void init_tableWidget_4();
+    void updateTableWidget4();
     dlg_add m_dlgAddPer;
     dlg_add_user m_dlgAddUser;
 

@@ -68,7 +68,7 @@ public:
     QList<CreInfo> searchByNG(QString containt,int index);
 signals:
 private:
-    QSqlDatabase rt_db;
+    QSqlDatabase cre_db;
 };
 
 

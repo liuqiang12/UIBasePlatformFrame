@@ -21,8 +21,8 @@ void sonSql::init()
     if(QSqlDatabase::contains("qt_sql_default_connection"))
     son_db = QSqlDatabase::database("qt_sql_default_connection");
     else
-    son_db = QSqlDatabase::addDatabase("QSQLITE");
-    son_db.setDatabaseName("E:\\WorkSpace\\2022.12.26V20221226\\rtdata.db");
+    son_db = QSqlDatabase::addDatabase("QSQLITE","user");
+    son_db.setDatabaseName("E:\\WorkSpace\\UIBasePlatformFrame\\rtdata.db");
     if(!son_db.open())
         qDebug()<<"db not open";
 }
