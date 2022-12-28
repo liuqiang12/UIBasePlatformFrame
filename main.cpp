@@ -86,6 +86,8 @@ int main(int argc, char *argv[])
    QObject::connect(&quitAct, &QAction::triggered, qApp, &handleQuit);
    QObject::connect(&openAct, &QAction::triggered, qApp, &handleOpen);
 
+
+
    // 加载图标
    QPixmap oPixmap(32, 32);
    oPixmap.load(":/image/icon.png");
