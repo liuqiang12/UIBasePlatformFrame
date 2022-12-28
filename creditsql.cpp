@@ -12,17 +12,17 @@ void CreditSql::init()
     if(QSqlDatabase::drivers().isEmpty())
      qDebug()<<"No database drivers found";
     if(QSqlDatabase::contains("qt_sql_default_connection"))
-    rt_db = QSqlDatabase::database("qt_sql_default_connection");
+    cre_db = QSqlDatabase::database("qt_sql_default_connection");
     else
-    rt_db = QSqlDatabase::addDatabase("QSQLITE");
-    rt_db.setDatabaseName("E:\\2022\\2022.12.27\\2022.12.26V20221226\\rtdata.db");
-    if(!rt_db.open())
+    cre_db = QSqlDatabase::addDatabase("QSQLITE","creditinfo");
+    cre_db.setDatabaseName("E:\\WorkSpace\\UIBasePlatformFrame\\rtdata.db");
+    if(!cre_db.open())
         qDebug()<<"db not open";
 }
 
 quint32 CreditSql::getPerCnt()
 {
-    QSqlQuery sql(rt_db);
+    QSqlQuery sql(cre_db);
     sql.exec("select count(id) from creditinfo ");
     quint32 uiCnt=0;
     while (sql.next())
@@ -35,7 +35,7 @@ quint32 CreditSql::getPerCnt()
 QList<CreInfo> CreditSql::getPagePer(quint32 page, quint32 uiCnt)
 {
     QList<CreInfo> l;
-    QSqlQuery sql(rt_db);
+    QSqlQuery sql(cre_db);
     QString strSql=QString("select * from rtinfo order by id limit '%1' offset '%2'").
             arg(uiCnt).
             arg(page*uiCnt);
@@ -63,11 +63,66 @@ QList<CreInfo> CreditSql::getPagePer(quint32 page, quint32 uiCnt)
     return l;
 }
 
+bool CreditSql::addPer(CreInfo info)
+{
+    QSqlQuery sql(cre_db);
+    QString strSql=QString("insert into creditinfo values (null,'%1','%2','%3','%4','%5','%6','%7','%8','%9','%10','%11','%12','%13','%14')").
+            arg(info.group_id).
+            arg(info.group_name).
+            arg(info.leader_name).
+            arg(info.leader_gender).
+            arg(info.leader_politics).
+            arg(info.leader_phone).
+            arg(info.leader_unit).
+            arg(info.deputy_name).
+            arg(info.deputy_gender).
+            arg(info.deputy_politics).
+            arg(info.deputy_phone).
+            arg(info.deputy_unit).
+            arg(info.staffing).
+            arg(info.remark);
+
+    return sql.exec(strSql);
+}
+
+bool CreditSql::addPer(QList<CreInfo> l)
+{
+    QSqlQuery sql(cre_db);
+    cre_db.transaction();
+    for(auto info:l)
+    {
+        QString strSql=QString("insert into creditinfo values (null,'%1','%2','%3','%4','%5','%6','%7','%8','%9','%10','%11','%12','%13','%14')").
+                arg(info.group_id).
+                arg(info.group_name).
+                arg(info.leader_name).
+                arg(info.leader_gender).
+                arg(info.leader_politics).
+                arg(info.leader_phone).
+                arg(info.leader_unit).
+                arg(info.deputy_name).
+                arg(info.deputy_gender).
+                arg(info.deputy_politics).
+                arg(info.deputy_phone).
+                arg(info.deputy_unit).
+                arg(info.staffing).
+                arg(info.remark);
+        sql.exec(strSql);
+    }
+    cre_db.commit();
+    return true;
+}
+
+bool CreditSql::delPer(int id)
+{
+    QSqlQuery sql(cre_db);
+    return sql.exec(QString("delete from creditinfo where id=%1").arg(id));
+}
+
 void CreditSql::close()
 {
     QString connection;
-    connection = rt_db.connectionName();
-    rt_db.close();
-    rt_db = QSqlDatabase();
-    rt_db.removeDatabase(connection);
+    connection = cre_db.connectionName();
+    cre_db.close();
+    cre_db = QSqlDatabase();
+    cre_db.removeDatabase(connection);
 }

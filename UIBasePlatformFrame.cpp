@@ -1189,50 +1189,94 @@ void UIBasePlatformFrame::on_tableWidget_2_itemDoubleClicked(QTableWidgetItem *i
 
 }
 
+//2022.12.28更改
+int generateRandomNumber()
+{
+    qsrand(QTime(0,0,0).secsTo(QTime::currentTime()));
+    int test =qrand()%10;
+    return test;
+}
 void UIBasePlatformFrame::on_pushButton_4_clicked()
 {
-//    QList<CreInfo> l;
-//    for(int i=0;i<m_lNames.size();i++)
+    QList<CreInfo> l;
+
+    for(int i=0;i<m_lNames.size();i++)
+    {
+        CreInfo info;
+        info.group_id="N2022"+QString::number(i);
+        info.group_name="N2022";
+        info.leader_name=m_lNames[i];
+        if(i%3)
+        {
+           info.leader_politics="团员";
+           info.leader_gender="男";
+
+
+        };
+        if(i%2)
+        {
+            info.leader_politics="群众";
+            info.leader_gender="女";
+
+        };
+        if(i%7)
+        {
+            info.leader_politics="党员";
+            info.leader_gender="女";
+
+        };
+        info.leader_unit="中国融通资源开发有限公司";
+        info.leader_phone="12999999"+QString::number(i);
+
+
+        if(i%3)
+        {
+           info.deputy_name=m_lNames[i];
+           info.deputy_politics="团员";
+           info.deputy_gender="女";
+           info.deputy_phone="138888"+QString::number(i);
+
+        };
+        if(i%2)
+        {
+            info.deputy_name=m_lNames[i];
+            info.deputy_politics="党员";
+            info.deputy_gender="男";
+            info.deputy_phone="138888"+QString::number(i);
+        };
+        if(i%7)
+        {
+            info.deputy_name=m_lNames[i];
+            info.deputy_politics="群众";
+            info.deputy_gender="女";
+            info.deputy_phone="138888"+QString::number(i);
+        };
+        info.deputy_unit="中国融通资源开发有限公司";
+        info.staffing=generateRandomNumber();
+
+        l.append(info);
+   }
+    m_prtCreSql->addPer(l);
+    updateTableWidget4();
+}
+
+void UIBasePlatformFrame::updateTableWidget4()
+{
+    auto cnt =m_prtCreSql->getPerCnt();
+    ui->label_48->setText(QString("总数:%1").arg(cnt));
+    QList<CreInfo> lPer=m_prtCreSql->getPagePer(0,cnt);
+    ui->tableWidget_4->setRowCount(cnt);
+//    for(int i=2; i<lPer.size()+2;i++)
 //    {
-////        QString group_id;
-////        QString group_name;
-////        QString leader_name;
-////        QString leader_gender;
-////        QString leader_politics;
-////        QString leader_phone;
-////        QString leader_unit;
-////        QString deputy_name;
-////        QString deputy_gender;
-////        QString deputy_politics;
-////        QString deputy_phone;
-////        QString deputy_unit;
-////        QString staffing;
-////        QString remark;
-////        CreInfo info;
-//        info.group_id="N2022"+QString(i);
-//        info.name=m_lNames[i];
-//        if(i%3)
-//        {
-//           info.age=16;
-//           info.gender="男";
-//        };
-//        if(i%2)
-//        {
-//            info.age=17;
-//            info.gender="女";
-//        };
-//        if(i%7)
-//        {
-//            info.age=18;
-//            info.gender="男";
-//        };
-//        info.time="2022.7.1";
-//        info.school="第一中学";
-//        info.phone="12999999"+QString::number(i);
-//        info.email=m_lNames[i]+"@qq.com";
-////        l.append(info);
-//   }
-//   m_prtCreSql->addPer(l);
-//   updateTable();
+//        ui->tableWidget->setItem(i,0,new QTableWidgetItem(QString::number(i)));
+//        ui->tableWidget->setItem(i,1,new QTableWidgetItem(QString::number(lPer[i].id)));
+//        ui->tableWidget->setItem(i,2,new QTableWidgetItem(lPer[i].name));
+//        ui->tableWidget->setItem(i,3,new QTableWidgetItem(lPer[i].gender));
+//        ui->tableWidget->setItem(i,4,new QTableWidgetItem(QString::number(lPer[i].age)));
+//        ui->tableWidget->setItem(i,5,new QTableWidgetItem(lPer[i].school));
+//        ui->tableWidget->setItem(i,6,new QTableWidgetItem(lPer[i].time));
+//        ui->tableWidget->setItem(i,7,new QTableWidgetItem(lPer[i].phone));
+//        ui->tableWidget->setItem(i,8,new QTableWidgetItem(lPer[i].email));
+//    }
 }
 

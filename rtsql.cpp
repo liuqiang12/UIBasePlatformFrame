@@ -22,8 +22,8 @@ void rtSql::init()
     if(QSqlDatabase::contains("qt_sql_default_connection"))
     rt_db = QSqlDatabase::database("qt_sql_default_connection");
     else
-    rt_db = QSqlDatabase::addDatabase("QSQLITE");
-    rt_db.setDatabaseName("E:\\2022\\2022.12.27\\2022.12.26V20221226\\rtdata.db");
+    rt_db = QSqlDatabase::addDatabase("QSQLITE","rtinfo");
+    rt_db.setDatabaseName("E:\\WorkSpace\\UIBasePlatformFrame\\rtdata.db");
     if(!rt_db.open())
         qDebug()<<"db not open";
 }
