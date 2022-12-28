@@ -36,7 +36,7 @@ QList<CreInfo> CreditSql::getPagePer(quint32 page, quint32 uiCnt)
 {
     QList<CreInfo> l;
     QSqlQuery sql(cre_db);
-    QString strSql=QString("select * from rtinfo order by id limit '%1' offset '%2'").
+    QString strSql=QString("select * from creditinfo order by id limit '%1' offset '%2'").
             arg(uiCnt).
             arg(page*uiCnt);
     sql.exec(strSql);

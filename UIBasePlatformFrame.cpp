@@ -691,8 +691,8 @@ void UIBasePlatformFrame::updateTable()
 
 void UIBasePlatformFrame::init_tableWidget_4()
 {
-    ui->tableWidget_4->clearContents();
-    ui->tableWidget_4->clear();
+//    ui->tableWidget_4->clearContents();
+//    ui->tableWidget_4->clear();
     ui->tableWidget_4->setSpan(0, 0, 2, 1);//序号
     ui->tableWidget_4->setSpan(0, 1, 2, 1);//ID
     ui->tableWidget_4->setSpan(0, 2, 2, 1);//组别码
@@ -1091,6 +1091,7 @@ int generateRandomNumber()
 }
 void UIBasePlatformFrame::on_pushButton_4_clicked()
 {
+    init_tableWidget_4();
     QList<CreInfo> l;
 
     for(int i=0;i<m_lNames.size();i++)
@@ -1157,38 +1158,36 @@ void UIBasePlatformFrame::on_pushButton_4_clicked()
 
 void UIBasePlatformFrame::updateTableWidget4()
 {
+
     auto cnt =m_prtCreSql->getPerCnt();
     ui->label_48->setText(QString("总数:%1").arg(cnt));
+    qDebug()<<cnt;
     QList<CreInfo> lPer=m_prtCreSql->getPagePer(0,cnt);
     ui->tableWidget_4->setRowCount(cnt);
     for(int i=0; i<lPer.size();i++)
     {
         int j=i+2;
-//        arg(info.group_id).
-//        arg(info.group_name).
-//        arg(info.leader_name).
-//        arg(info.leader_gender).
-//        arg(info.leader_politics).
-//        arg(info.leader_phone).
-//        arg(info.leader_unit).
-//        arg(info.deputy_name).
-//        arg(info.deputy_gender).
-//        arg(info.deputy_politics).
-//        arg(info.deputy_phone).
-//        arg(info.deputy_unit).
-//        arg(info.staffing).
 
+        ui->tableWidget_4->setItem(j,0,new QTableWidgetItem(QString::number(i)));
+        ui->tableWidget_4->setItem(j,1,new QTableWidgetItem(QString::number(lPer[i].id)));
 
-//        arg(info.remark);
-        ui->tableWidget->setItem(j,0,new QTableWidgetItem(QString::number(i)));
-        ui->tableWidget->setItem(j,1,new QTableWidgetItem(QString::number(lPer[i].id)));
-        ui->tableWidget->setItem(j,2,new QTableWidgetItem(lPer[i].group_id));
-        ui->tableWidget->setItem(j,3,new QTableWidgetItem(lPer[i].group_name));
-        ui->tableWidget->setItem(j,4,new QTableWidgetItem(lPer[i].leader_gender));
-        ui->tableWidget->setItem(j,5,new QTableWidgetItem(lPer[i].leader_politics));
-        ui->tableWidget->setItem(j,6,new QTableWidgetItem(lPer[i].leader_phone));
-        ui->tableWidget->setItem(j,7,new QTableWidgetItem(lPer[i].leader_unit));
-        ui->tableWidget->setItem(j,8,new QTableWidgetItem(lPer[i].email));
+        ui->tableWidget_4->setItem(j,2,new QTableWidgetItem(lPer[i].group_id));
+        ui->tableWidget_4->setItem(j,3,new QTableWidgetItem(lPer[i].group_name));
+
+        ui->tableWidget_4->setItem(j,4,new QTableWidgetItem(lPer[i].leader_name));
+        ui->tableWidget_4->setItem(j,5,new QTableWidgetItem(lPer[i].leader_gender));
+        ui->tableWidget_4->setItem(j,6,new QTableWidgetItem(lPer[i].leader_politics));
+        ui->tableWidget_4->setItem(j,7,new QTableWidgetItem(lPer[i].leader_phone));
+        ui->tableWidget_4->setItem(j,8,new QTableWidgetItem(lPer[i].leader_unit));
+
+        ui->tableWidget_4->setItem(j,9,new QTableWidgetItem(lPer[i].deputy_name));
+        ui->tableWidget_4->setItem(j,10,new QTableWidgetItem(lPer[i].deputy_gender));
+        ui->tableWidget_4->setItem(j,11,new QTableWidgetItem(lPer[i].deputy_politics));
+        ui->tableWidget_4->setItem(j,12,new QTableWidgetItem(lPer[i].deputy_phone));
+        ui->tableWidget_4->setItem(j,13,new QTableWidgetItem(lPer[i].deputy_unit));
+
+        ui->tableWidget_4->setItem(j,14,new QTableWidgetItem(lPer[i].staffing));
+        ui->tableWidget_4->setItem(j,15,new QTableWidgetItem(lPer[i].remark));
     }
 
 
