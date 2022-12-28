@@ -1,0 +1,33 @@
+﻿
+
+QDialog#UserWinDialog {
+    background-color: white;
+/*    border: 1px solid #1D2025;*/
+    color: black;
+    min-height: 700px;
+    min-width: 1000px;
+    font-size: 12px;
+    background-image:url(:/image/winBackImage.png);
+    background-position: left top;
+
+}
+QDialog QPushButton:hover{
+    background-color: #0099ff;
+    cursor: pointer;
+}
+
+QDialog QLabel{
+    color:white;
+}
+
+WindowTitle {
+    background-color: #005791;
+    border: 1px solid #003322;
+    color: black;
+}
+QDialogButtonBox#buttonBox {
+    background-color: #005791;
+    border: 1px solid #003322;
+    color: black;
+}
+

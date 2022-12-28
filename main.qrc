@@ -1,0 +1,29 @@
+<RCC>
+    <qresource prefix="/">
+        <file>image/fontawesome-webfont.ttf</file>
+        <file>image/main_about.png</file>
+        <file>image/main_company.png</file>
+        <file>image/main_config.png</file>
+        <file>image/main_data.png</file>
+        <file>image/main_exit.png</file>
+        <file>image/main_help.png</file>
+        <file>image/main_main.png</file>
+        <file>image/main_person.png</file>
+        <file>image/logo.png</file>
+        <file>image/main_example.png</file>
+        <file>main.css</file>
+        <file>dlgadd.css</file>
+        <file>image/info.png</file>
+        <file>winDialog.css</file>
+        <file>image/user-tip.png</file>
+        <file>image/window-default-tip.png</file>
+        <file>image/winBackImage.png</file>
+        <file>image/down2.png</file>
+        <file>image/down.png</file>
+        <file>image/up.png</file>
+        <file>image/up2.png</file>
+        <file>image/yq.png</file>
+        <file>image/icon.ico</file>
+        <file>image/icon.png</file>
+    </qresource>
+</RCC>

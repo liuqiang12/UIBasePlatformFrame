@@ -1,0 +1,20 @@
+﻿QDialog {
+    background-color: white;
+    border: 1px solid #1D2025;
+    color: black;
+    min-height: 500px;
+    min-width: 600px;
+    font-size: 12px;
+}
+
+QDialog#UserWinDialog {
+    background-color: white;
+    border: 1px solid #1D2025;
+    color: black;
+    min-height: 900px;
+    min-width: 600px;
+    font-size: 12px;
+}
+
+
+
