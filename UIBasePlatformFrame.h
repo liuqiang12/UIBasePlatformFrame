@@ -119,6 +119,7 @@ private:
     //托盘
     QSystemTrayIcon *stystemIcon;
 private slots:
+    void on_pushButton_5_clicked();
     void send();
     void dataTransferWin();
     void toTray();
