@@ -13,16 +13,15 @@ DataTransferDialog::DataTransferDialog(QWidget *parent) :
     ui(new Ui::DataTransferDialog)
 {
     ui->setupUi(this);
-    this->setBackgroundRole(QPalette::NoRole);
     //渐变色start
-    QGraphicsDropShadowEffect *shadow=new QGraphicsDropShadowEffect(this);
-    shadow->setOffset(0);
-    shadow->setBlurRadius(20);
-    shadow->setColor(Qt::darkGreen);
+//    QGraphicsDropShadowEffect *shadow=new QGraphicsDropShadowEffect(this);
+//    shadow->setOffset(0);
+//    shadow->setBlurRadius(20);
+//    shadow->setColor(Qt::darkGreen);
 
 
 
-    this->setGraphicsEffect(shadow);
+//    this->setGraphicsEffect(shadow);
     //渐变色start
     this->setStyleSheet("QDialog{background-color:#c1d1e9}");
     this->setMouseTracking(true);//追踪鼠标
