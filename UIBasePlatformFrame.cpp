@@ -91,6 +91,7 @@ UIBasePlatformFrame::UIBasePlatformFrame(QWidget *parent) :
     updateTable();
     UpdateTable();
     init_tableWidget_4();
+<<<<<<< HEAD
     updateTableWidget4();
 
     //获取页数
@@ -103,6 +104,9 @@ UIBasePlatformFrame::UIBasePlatformFrame(QWidget *parent) :
     currentPage=1;
     updataPage();
     firstPage();
+=======
+//    updateTableWidget4();
+>>>>>>> 38a26c038b2b9ef8039698d347e023559dcd13c6
 
 }
 
@@ -867,7 +871,10 @@ void UIBasePlatformFrame::init_tableWidget_4()
     ui->tableWidget_4->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);    //x先自适应宽度
     ui->tableWidget_4->horizontalHeader()->setSectionResizeMode(8, QHeaderView::ResizeToContents);     //然后设置要根据内容使用宽度的列
     ui->tableWidget_4->setAlternatingRowColors(true);
+<<<<<<< HEAD
     ui->tableWidget_4->horizontalHeader()->setSectionResizeMode(13, QHeaderView::ResizeToContents);//0表示列号
+=======
+>>>>>>> 38a26c038b2b9ef8039698d347e023559dcd13c6
 }
 
 void UIBasePlatformFrame::on_btn_add_clicked()
@@ -1253,7 +1260,11 @@ void UIBasePlatformFrame::on_pushButton_4_clicked()
    }
     m_prtCreSql->addPer(l);
     updateTableWidget4();
+<<<<<<< HEAD
     updataPage();
+=======
+}
+>>>>>>> 38a26c038b2b9ef8039698d347e023559dcd13c6
 
 }
 //更新表数据
@@ -1268,6 +1279,7 @@ void UIBasePlatformFrame::updateTableWidget4()
     for(int i=0; i<lPer.size();i++)
     {
         int j=i+2;
+<<<<<<< HEAD
 
         ui->tableWidget_4->setItem(j,0,new QTableWidgetItem(QString::number(i+1)));
         ui->tableWidget_4->setItem(j,1,new QTableWidgetItem(QString::number(lPer[i].id)));
@@ -1333,8 +1345,13 @@ void UIBasePlatformFrame::on_pushButton_5_clicked()
 //    updataPage();
     ui->label_49->setText(QString("0/0"));
 }
+=======
+>>>>>>> 38a26c038b2b9ef8039698d347e023559dcd13c6
 
+        ui->tableWidget_4->setItem(j,0,new QTableWidgetItem(QString::number(i)));
+        ui->tableWidget_4->setItem(j,1,new QTableWidgetItem(QString::number(lPer[i].id)));
 
+<<<<<<< HEAD
 
 //2022.12.29更改
 //新增组别和人员
@@ -1386,8 +1403,65 @@ void UIBasePlatformFrame::on_pushButton_6_clicked()
 
         c=m_prtCreSql->searchByName(queryParam);
         TianWidget4(c);
-    }
+=======
+        ui->tableWidget_4->setItem(j,2,new QTableWidgetItem(lPer[i].group_id));
+        ui->tableWidget_4->setItem(j,3,new QTableWidgetItem(lPer[i].group_name));
 
+        ui->tableWidget_4->setItem(j,4,new QTableWidgetItem(lPer[i].leader_name));
+        ui->tableWidget_4->setItem(j,5,new QTableWidgetItem(lPer[i].leader_gender));
+        ui->tableWidget_4->setItem(j,6,new QTableWidgetItem(lPer[i].leader_politics));
+        ui->tableWidget_4->setItem(j,7,new QTableWidgetItem(lPer[i].leader_phone));
+        ui->tableWidget_4->setItem(j,8,new QTableWidgetItem(lPer[i].leader_unit));
+
+        ui->tableWidget_4->setItem(j,9,new QTableWidgetItem(lPer[i].deputy_name));
+        ui->tableWidget_4->setItem(j,10,new QTableWidgetItem(lPer[i].deputy_gender));
+        ui->tableWidget_4->setItem(j,11,new QTableWidgetItem(lPer[i].deputy_politics));
+        ui->tableWidget_4->setItem(j,12,new QTableWidgetItem(lPer[i].deputy_phone));
+        ui->tableWidget_4->setItem(j,13,new QTableWidgetItem(lPer[i].deputy_unit));
+
+        ui->tableWidget_4->setItem(j,14,new QTableWidgetItem(lPer[i].staffing));
+        ui->tableWidget_4->setItem(j,15,new QTableWidgetItem(lPer[i].remark));
+>>>>>>> 38a26c038b2b9ef8039698d347e023559dcd13c6
+    }
+}
+
+void UIBasePlatformFrame::on_pushButton_5_clicked()
+{
+//    auto cnt =m_prtCreSql->getPerCnt();
+//    ui->label_48->setText(QString("总数:%1").arg(cnt));
+//    qDebug()<<cnt;
+//    QList<CreInfo> lPer=m_prtCreSql->getPagePer(0,cnt);
+////    ui->tableWidget_4->setRowCount(cnt);
+
+//    for(int i=0; i<lPer.size();i++)
+//    {
+//        int j=i+2;
+
+//        ui->tableWidget_4->setItem(j,0,new QTableWidgetItem());
+//        ui->tableWidget_4->setItem(j,1,new QTableWidgetItem());
+
+//        ui->tableWidget_4->setItem(j,2,new QTableWidgetItem());
+//        ui->tableWidget_4->setItem(j,3,new QTableWidgetItem());
+
+//        ui->tableWidget_4->setItem(j,4,new QTableWidgetItem());
+//        ui->tableWidget_4->setItem(j,5,new QTableWidgetItem());
+//        ui->tableWidget_4->setItem(j,6,new QTableWidgetItem());
+//        ui->tableWidget_4->setItem(j,7,new QTableWidgetItem());
+//        ui->tableWidget_4->setItem(j,8,new QTableWidgetItem());
+
+//        ui->tableWidget_4->setItem(j,9,new QTableWidgetItem());
+//        ui->tableWidget_4->setItem(j,10,new QTableWidgetItem());
+//        ui->tableWidget_4->setItem(j,11,new QTableWidgetItem());
+//        ui->tableWidget_4->setItem(j,12,new QTableWidgetItem());
+//        ui->tableWidget_4->setItem(j,13,new QTableWidgetItem());
+
+//        ui->tableWidget_4->setItem(j,14,new QTableWidgetItem());
+//        ui->tableWidget_4->setItem(j,15,new QTableWidgetItem());
+//    }
+//    m_prtCreSql->clearPerTable();
+//    auto cnt1 =m_prtCreSql->getPerCnt();
+//    ui->label_48->setText(QString("总数:%1").arg(cnt1));
+//    init_tableWidget_4();
 
 
 
@@ -1533,6 +1607,7 @@ void UIBasePlatformFrame::on_pushButton_15_clicked()
 
 
 
+<<<<<<< HEAD
 
 
 
@@ -1554,3 +1629,5 @@ void UIBasePlatformFrame::on_pushButton_15_clicked()
 
 
 
+=======
+>>>>>>> 38a26c038b2b9ef8039698d347e023559dcd13c6

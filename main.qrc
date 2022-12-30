@@ -30,5 +30,8 @@
         <file>image/transfer.png</file>
         <file>trayButton.css</file>
         <file>image/dataTransfer.png</file>
+        <file>image/js.png</file>
+        <file>image/plsjdc.png</file>
+        <file>image/wzqdtb.png</file>
     </qresource>
 </RCC>

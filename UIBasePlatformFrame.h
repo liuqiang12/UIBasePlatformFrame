@@ -132,6 +132,7 @@ private:
 
 
 private slots:
+    void on_pushButton_5_clicked();
     void send();
     void dataTransferWin();
     void toTray();

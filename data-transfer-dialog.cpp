@@ -5,14 +5,40 @@
 #include<QFile>
 #include<QLabel>
 #include<QListWidget>
+<<<<<<< HEAD
 //#include<QChartView>
+=======
+#include<QGraphicsDropShadowEffect>
+#include<QPalette>
+
+>>>>>>> 38a26c038b2b9ef8039698d347e023559dcd13c6
 DataTransferDialog::DataTransferDialog(QWidget *parent) :
     QDialog(parent),
     ui(new Ui::DataTransferDialog)
 {
     ui->setupUi(this);
-    this->setProperty("canMove", true);
+    //渐变色start
+//    QGraphicsDropShadowEffect *shadow=new QGraphicsDropShadowEffect(this);
+//    shadow->setOffset(0);
+//    shadow->setBlurRadius(20);
+//    shadow->setColor(Qt::darkGreen);
 
+
+
+//    this->setGraphicsEffect(shadow);
+    //渐变色start
+    this->setStyleSheet("QDialog{background-color:#c1d1e9}");
+    this->setMouseTracking(true);//追踪鼠标
+
+
+    this->setProperty("canMove", true);
+    QList<QPushButton *> list_pushButton = this->ui->groupBox->findChildren<QPushButton *>();
+    foreach (QPushButton *lb, list_pushButton) {
+        lb->setProperty("class","trayButton");
+        lb->setFlat(true);
+        QString curItem_text=lb->text();
+
+<<<<<<< HEAD
 ////    QHBoxLayout* hboxLayout = new QHBoxLayout();
 //    for(int j=1;j<3;j++)
 //    {
@@ -66,14 +92,47 @@ DataTransferDialog::DataTransferDialog(QWidget *parent) :
 //        connect(btn, SIGNAL(clicked()), this, SLOT(setDataTrasferStyle()));
 //    }
 
+=======
+        if(curItem_text.contains("计划任务接收",Qt::CaseInsensitive))
+        {
+           //不区分大小写
+           lb->setProperty("flag","jhrwjs");
+        }
+        if(curItem_text.contains("清点物资同步",Qt::CaseInsensitive))
+        {
+           //不区分大小写
+           lb->setProperty("flag","wzqdtb");
+        }
+        if(curItem_text.contains("异常数据检验",Qt::CaseInsensitive))
+        {
+           //不区分大小写
+           lb->setProperty("flag","ycsjjy");
+        }
+        if(curItem_text.contains("基础资源同步",Qt::CaseInsensitive))
+        {
+           //不区分大小写
+           lb->setProperty("flag","jczytb");
+        }
+
+        if(curItem_text.contains("数据引接",Qt::CaseInsensitive))
+        {
+           //不区分大小写
+           lb->setProperty("flag","sjyj");
+        }
+
+        if(curItem_text.contains("通知公告",Qt::CaseInsensitive))
+        {
+           //不区分大小写
+           lb->setProperty("flag","tzgg");
+        }
+    }
+>>>>>>> 38a26c038b2b9ef8039698d347e023559dcd13c6
 
     this->setWindowFlags(Qt::WindowCloseButtonHint);
-//    this->setWindowFlags(Qt::FramelessWindowHint | Qt::WindowSystemMenuHint | Qt::WindowMinMaxButtonsHint);
-
     this->setProperty("canMove", true);
     this->setWindowTitle("数据交互");
     this->setWindowIcon(QIcon(":/image/transfer.png"));
-    this->setFixedSize(600,400);
+    this->setFixedSize(550,350);
 
 
     QFile fread;
