@@ -1336,7 +1336,7 @@ void UIBasePlatformFrame::on_pushButton_5_clicked()
         ui->tableWidget_4->setItem(j,14,new QTableWidgetItem());
         ui->tableWidget_4->setItem(j,15,new QTableWidgetItem());
     }
-    m_prtCreSql->clearPerTable();
+//    m_prtCreSql->clearPerTable();
     auto cnt1 =m_prtCreSql->getPerCnt();
     ui->label_48->setText(QString("总数:%1").arg(cnt1));
     init_tableWidget_4();
@@ -1469,7 +1469,46 @@ void UIBasePlatformFrame::TianWidget4(QList<CreInfo> c)
     {
         int j=i+2;
         index++;
-        ui->tableWidget_4->setItem(j,0,new QTableWidgetItem(QString::number(i+1)));
+
+        int firstRecord = (currentPage-1)*PageMaxData;
+
+        ui->tableWidget_4->setItem(j,0,new QTableWidgetItem(QString::number(firstRecord+i)));
+        ui->tableWidget_4->setItem(j,1,new QTableWidgetItem(QString::number(c[i].id)));
+
+        ui->tableWidget_4->setItem(j,2,new QTableWidgetItem(c[i].group_id));
+        ui->tableWidget_4->setItem(j,3,new QTableWidgetItem(c[i].group_name));
+
+        ui->tableWidget_4->setItem(j,4,new QTableWidgetItem(c[i].leader_name));
+        ui->tableWidget_4->setItem(j,5,new QTableWidgetItem(c[i].leader_gender));
+        ui->tableWidget_4->setItem(j,6,new QTableWidgetItem(c[i].leader_politics));
+        ui->tableWidget_4->setItem(j,7,new QTableWidgetItem(c[i].leader_phone));
+        ui->tableWidget_4->setItem(j,8,new QTableWidgetItem(c[i].leader_unit));
+
+        ui->tableWidget_4->setItem(j,9,new QTableWidgetItem(c[i].deputy_name));
+        ui->tableWidget_4->setItem(j,10,new QTableWidgetItem(c[i].deputy_gender));
+        ui->tableWidget_4->setItem(j,11,new QTableWidgetItem(c[i].deputy_politics));
+        ui->tableWidget_4->setItem(j,12,new QTableWidgetItem(c[i].deputy_phone));
+        ui->tableWidget_4->setItem(j,13,new QTableWidgetItem(c[i].deputy_unit));
+
+        ui->tableWidget_4->setItem(j,14,new QTableWidgetItem(c[i].staffing));
+        ui->tableWidget_4->setItem(j,15,new QTableWidgetItem(c[i].remark));
+    }
+    ui->tableWidget_4->setRowCount(index+2);
+}
+
+
+void UIBasePlatformFrame::resultRes(QList<CreInfo> c)
+{
+
+    int index=0;
+
+    for(int i=0;i<c.size();i++)
+    {
+        int j=i+2;
+        index++;
+        int firstRecord = (currentPage-1)*10;
+
+        ui->tableWidget_4->setItem(j,0,new QTableWidgetItem(QString::number(firstRecord+i)));
         ui->tableWidget_4->setItem(j,1,new QTableWidgetItem(QString::number(c[i].id)));
 
         ui->tableWidget_4->setItem(j,2,new QTableWidgetItem(c[i].group_id));
@@ -1528,25 +1567,25 @@ void UIBasePlatformFrame::on_pushButton_8_clicked()
 //更新页数
 void UIBasePlatformFrame::updataPage()
 {
-    auto cnt =m_prtCreSql->getPerCnt();
+    auto total =m_prtCreSql->getPerCnt();
 //    if (cnt==0)
 //    {
 ////        pageSum=0;
 ////        currentPage=0;
 //    }
-    if (cnt <= PageMaxData) {
+    if (total <= PageMaxData) {
         pageSum = 1;
     }
-    if ((cnt % PageMaxData) == 0) {
-        pageSum = cnt / PageMaxData;
+    if ((total % PageMaxData) == 0) {
+        pageSum = total / PageMaxData;
     }
     else {
-        pageSum = (cnt / PageMaxData) + 1;
+        pageSum = (total / PageMaxData) + 1;
     }
-    qDebug()<<"cnt"<<cnt;
-    qDebug()<<"PageMaxData"<<PageMaxData;
-    qDebug()<<"currentPage"<<currentPage;
-    qDebug()<<"pageSum"<<pageSum;
+//    qDebug()<<"cnt"<<cnt;
+//    qDebug()<<"PageMaxData"<<PageMaxData;
+//    qDebug()<<"currentPage"<<currentPage;
+//    qDebug()<<"pageSum"<<pageSum;
     ui->label_49->setText(QString("%1/%2").arg(currentPage).arg(pageSum));
 }
 //首页
@@ -1570,6 +1609,54 @@ void UIBasePlatformFrame::on_pushButton_11_clicked()
 //下一页
 void UIBasePlatformFrame::on_pushButton_12_clicked()
 {
+    this->on_pushButton_5_clicked();
+    int pageSize =ui->comboBox->currentText().toUInt();
+    int startRecordIndex = (currentPage)*10;
+    DBHelper* helper = DBHelper::getInstance();
+    helper->createConnection();
+    QList<CreInfo> listRecord;
+    CreInfo record;
+    QSqlQuery query(QString("select * from creditinfo limit %1 , %2").arg(startRecordIndex).arg(pageSize), helper->db);
+    query.exec();
+    while (query.next())
+    {
+        record.id=query.value(0).toInt();
+        record.group_id=query.value(1).toString();
+        record.group_name=query.value(2).toString();
+        record.leader_name=query.value(3).toString();
+        record.leader_gender=query.value(4).toString();
+        record.leader_politics=query.value(5).toString();
+        record.leader_phone=query.value(6).toString();
+        record.leader_unit=query.value(7).toString();
+        record.deputy_name=query.value(8).toString();
+        record.deputy_gender=query.value(9).toString();
+        record.deputy_politics=query.value(10).toString();
+        record.deputy_phone=query.value(11).toString();
+        record.deputy_unit=query.value(12).toString();
+        record.staffing=query.value(13).toString();
+        record.remark=query.value(14).toString();
+        listRecord.push_back(record);
+    }
+    resultRes(listRecord);//返回数据界面呈现
+    updataPage();//修正页码信息
+
+
+
+
+
+
+
+
+
+
+
+
+
+//    currentPage++;
+//    int num=currentPage*PageMaxData;
+//    auto crePer=m_prtCreSql->PagePer(num);
+//    TianWidget4(crePer);
+//    updataPage();
 
 }
 //尾页

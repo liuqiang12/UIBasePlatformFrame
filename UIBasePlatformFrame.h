@@ -124,6 +124,8 @@ private:
     void Tian(QList<PerInfo> l);
     void TianU(QList<UserInfo> u);
     void TianWidget4(QList<CreInfo> c);
+    //返回数据
+    void resultRes(QList<CreInfo> c);
     //IP
     void showRightInfo();
     //托盘
