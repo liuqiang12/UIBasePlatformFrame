@@ -177,7 +177,7 @@ private slots:
     void on_tableWidget_2_itemDoubleClicked(QTableWidgetItem *item);
     void on_pushButton_4_clicked();
     void on_treeWidget_2_itemClicked(QTreeWidgetItem *item, int column);
-    void on_pushButton_5_clicked();
+//    void on_pushButton_5_clicked();
     void on_pushButton_7_clicked();
     void on_pushButton_9_clicked();
     void on_pushButton_6_clicked();

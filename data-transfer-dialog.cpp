@@ -5,13 +5,13 @@
 #include<QFile>
 #include<QLabel>
 #include<QListWidget>
-<<<<<<< HEAD
+
 //#include<QChartView>
-=======
+
 #include<QGraphicsDropShadowEffect>
 #include<QPalette>
 
->>>>>>> 38a26c038b2b9ef8039698d347e023559dcd13c6
+
 DataTransferDialog::DataTransferDialog(QWidget *parent) :
     QDialog(parent),
     ui(new Ui::DataTransferDialog)
@@ -38,7 +38,6 @@ DataTransferDialog::DataTransferDialog(QWidget *parent) :
         lb->setFlat(true);
         QString curItem_text=lb->text();
 
-<<<<<<< HEAD
 ////    QHBoxLayout* hboxLayout = new QHBoxLayout();
 //    for(int j=1;j<3;j++)
 //    {
@@ -92,7 +91,7 @@ DataTransferDialog::DataTransferDialog(QWidget *parent) :
 //        connect(btn, SIGNAL(clicked()), this, SLOT(setDataTrasferStyle()));
 //    }
 
-=======
+
         if(curItem_text.contains("计划任务接收",Qt::CaseInsensitive))
         {
            //不区分大小写
@@ -126,7 +125,6 @@ DataTransferDialog::DataTransferDialog(QWidget *parent) :
            lb->setProperty("flag","tzgg");
         }
     }
->>>>>>> 38a26c038b2b9ef8039698d347e023559dcd13c6
 
     this->setWindowFlags(Qt::WindowCloseButtonHint);
     this->setProperty("canMove", true);
