@@ -15,10 +15,12 @@ OBJECTS_DIR = temp/obj
 DESTDIR     = $$PWD/../bin
 
 SOURCES     += main.cpp \
+    DbHelper.cpp \
     autorun.cpp \
     creditsql.cpp \
     data-transfer-dialog.cpp \
     dlg_add.cpp \
+    dlg_add_cre.cpp \
     dlg_add_user.cpp \
     rtsql.cpp \
     sonsql.cpp \
@@ -28,10 +30,12 @@ SOURCES     += appinit.cpp
 SOURCES     += UIBasePlatformFrame.cpp
 
 HEADERS     += iconhelper.h \
+    DbHelper.h \
     autorun.h \
     creditsql.h \
     data-transfer-dialog.h \
     dlg_add.h \
+    dlg_add_cre.h \
     dlg_add_user.h \
     rtsql.h \
     sonsql.h \
@@ -42,6 +46,7 @@ HEADERS     += UIBasePlatformFrame.h
 FORMS       += UIBasePlatformFrame.ui \
     data-transfer-dialog.ui \
     dlg_add.ui \
+    dlg_add_cre.ui \
     dlg_add_user.ui \
     user-win-dialog.ui
 

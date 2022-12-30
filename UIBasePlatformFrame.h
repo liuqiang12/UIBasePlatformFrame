@@ -35,7 +35,7 @@
 #include <QSystemTrayIcon>
 #include <QIcon>
 #include<data-transfer-dialog.h>
-
+#include"dlg_add_cre.h"
 
 QT_BEGIN_NAMESPACE
 class QComboBox;
@@ -67,6 +67,10 @@ public:
     explicit UIBasePlatformFrame(QWidget *parent = 0);
     ~UIBasePlatformFrame();
     void initResize();
+    int PageMaxData;
+    int currentPage;
+    int pageSum;
+
 private:
 
 
@@ -104,8 +108,13 @@ private:
     void UpdateTable();
     void init_tableWidget_4();
     void updateTableWidget4();
+    void updataPage();
+    void firstPage();
+
+
     dlg_add m_dlgAddPer;
     dlg_add_user m_dlgAddUser;
+    DlgCreAdd m_dlgAddCre;
 
     UserWinDialog userWinDialog;
 
@@ -114,10 +123,14 @@ private:
 
     void Tian(QList<PerInfo> l);
     void TianU(QList<UserInfo> u);
+    void TianWidget4(QList<CreInfo> c);
     //IP
     void showRightInfo();
     //托盘
     QSystemTrayIcon *stystemIcon;
+
+
+
 private slots:
     void send();
     void dataTransferWin();
@@ -163,6 +176,17 @@ private slots:
     void on_tableWidget_2_itemDoubleClicked(QTableWidgetItem *item);
     void on_pushButton_4_clicked();
     void on_treeWidget_2_itemClicked(QTreeWidgetItem *item, int column);
+    void on_pushButton_5_clicked();
+    void on_pushButton_7_clicked();
+    void on_pushButton_9_clicked();
+    void on_pushButton_6_clicked();
+    void on_pushButton_10_clicked();
+    void on_pushButton_8_clicked();
+    void on_pushButton_13_clicked();
+    void on_pushButton_11_clicked();
+    void on_pushButton_12_clicked();
+    void on_pushButton_14_clicked();
+    void on_pushButton_15_clicked();
 };
 
 #endif // UIDEMO08_H

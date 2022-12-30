@@ -1,5 +1,6 @@
 ﻿#pragma execution_character_set("utf-8")
 
+#define PAGE_VALUE 27
 #include "UIBasePlatformFrame.h"
 #include "ui_UIBasePlatformFrame.h"
 #include "iconhelper.h"
@@ -8,6 +9,7 @@
 #include <QMenu>
 #include <QAction>
 #include <QDebug>
+#include<DbHelper.h>
 
 UIBasePlatformFrame::UIBasePlatformFrame(QWidget *parent) :
     QWidget(parent),
@@ -58,36 +60,49 @@ UIBasePlatformFrame::UIBasePlatformFrame(QWidget *parent) :
     m_ptrSonSql->init();
     m_prtCreSql=CreditSql::getinstance();
     m_prtCreSql->init();
-    m_lNames<<"隗聪洛"<<"令访梅"<<"启沛柔"<<"闾韵菲"<<"笪怀梦"<<"二初之"<<"仵云烟"<<"鄂绿柳"<<"令雁竹"<<"光山云"
-            <<"谯涵"<<"荷希辰"<<"希言"<<"可馨鄂"<<"初筠遥"<<"紫筠"<<"盘曼梦"<<"有从"<<"萍光振"<<"国贝乐"<<"安盘浔"
-          <<"剑蓟冷"<<"旋盖如"<<"凡谯元"<<"瑶之"<<"语达奚"<<"傲夏"<<"邓映"<<"珍桓灵"<<"兰袁允"<<"颜璎珞"<<"谌靖琪"
-         <<"华问薇"<<"养静丝"<<"兔昊天"<<"厉怀薇"<<"勾云鸣"<<"卞春竹"<<"雅奇月"<<"苗紫霜"<<"师宁"<<"曦查平"<<"柳柱"
-        <<"冬莲潭"<<"墨辰雅"<<"令仪"<<"合诗菲"<<"养新"<<"霜万醉"<<"柔养向"<<"南孛幼"<<"枫常青"<<"芙黎少"<<"轩太叔"
-       <<"伯谌"<<"丹烟单"<<"书琴"<<"查修"<<"明苗海"<<"诺闲承"<<"辞承宣"<<"戴深子"<<"清明修"<<"清容爵"<<"缑德逸"
-      <<"南门睿"<<"诚严墨"<<"然太泽"<<"宇公坚"<<"灼光完"<<"慕寒"<<"牟浩壤"<<"台兴"<<"发牟同"<<"光百思"<<"智南"
-     <<"门辰扬"<<"戴锦"<<"宇皮景"<<"瑜测光"<<"明晏德"<<"昌陕彬"<<"庆杂弘"<<"白少轩"<<"白振"<<"学清尚"<<"江仲"
-    <<"修真"<<"賴英虑"<<"暴凯风"<<"弦房辰"<<"铭笪"<<"秋瑶"<<"测正青令"<<"书文测"<<"冠贤璎"<<"元瑶"<<"桓白"<<"凝越宛"
-    <<"云仵"<<"诗珊"<<"孝水蕊"<<"越访曼"<<"荣曼"<<"青焱"<<"安兰有"<<"又旋瑶"<<"嘉铭"<<"志养又"<<"萱师"<<"笑卉"
-    <<"颜冷荷颜"<<"恨琴雅"<<"静安费"<<"灵蕊"<<"颜若"<<"琳费祁"<<"煊骆"<<"碧巧"<<"卞斯民"<<"陕涵采"<<"闲妙"<<"蕊潭"
-    <<"冬萱晏"<<"沛海姚"<<"英武"<<"台国源"<<"曳旭"<<"木仲"<<"鸿朗施黎"<<"枫牟英"<<"逸杂文"<<"石仲"<<"玉羽"<<"东方运"
-    <<"杰南"<<"宫启"<<"明缑雅"<<"枫皮亦"<<"翌皮"<<"鹤轩"<<"面杰玮"<<"印起伯"<<"晚明"<<"桂紫"<<"茵桓"<<"春蕾"
-    <<"谯修贤"<<"鄂冥华"<<"武慕玉"<<"房碧凡"<<"易之薇"<<"令雨安"<<"遥千"<<"凡二"<<"傲萱孝"<<"安瑶"<<"测恨珍"
-    <<"易振凯"<<"巫马平文"<<"渠景明"<<"盖灼光"<<"隗思"<<"霆清"<<"容爵巫"<<"马秋莉"<<"易静卉"<<"武水莲"<<"景醉梅"
-    <<"隗翠夏"<<"阙忆曼"<<"仵晓丝"<<"阙彬"<<"郁隗怀"<<"绿袁梦"<<"蕾花修"<<"真微生"<<"雪柔测"<<"嘉微盘"<<"幼青苟"
-    <<"博延荣"<<"凌凡希"<<"向菱测"<<"思辰景"<<"半槐房"<<"蒹葭焱"<<"奇月"<<"袁修尧"<<"希雁"<<"柳易问"<<"孟初"<<"柳娜"
-    <<"芸灀"<<"罗冰绿"<<"黎韵洁"<<"繁绮烟"<<"苗元勋"<<"许念汐"<<"卞香凝"<<"孟飞"<<"菱苗"<<"横波韦"<<"耘志"<<"潭翠柏"
-    <<"昊天云"<<"潭迎梅罗"<<"凌玉单"<<"怜雁潭"<<"易蝶"<<"颜霄"<<"翎卞泽"<<"语解楚"<<"薰沐兴"<<"为陕紫"<<"夏闲盼"
-    <<"玉闲史"<<"宇罗睿"<<"德师小"<<"蕊师"<<"凌文芥"<<"以松孛"<<"新丹谌"<<"怜岚妳"<<"珏麟单"<<"又珊沐"<<"雅枫万"
-    <<"书容闲"<<"妙蓝单"<<"飞柏影"<<"慕山昊"<<"修博飞"<<"之卉静"<<"巧之"<<"黎春南"<<"合辰"<<"岩黎泰"<<"诚太"<<"史寒"
-    <<"寻黑"<<"玉坤陕"<<"言宇贡"<<"无麟缑"<<"和昶缑"<<"乐生陕"<<"皓君瑶"<<"昆颉"<<"晏承"<<"辰宁茂"<<"学夜"<<"元魁晏"
-    <<"咏志宿"<<"展阳战司"<<"羽黑鸿"<<"信公仲"<<"温韦"<<"夜博"<<"瀚賴尧"<<"宸戴尧"<<"墨晚承"<<"澈施少"<<"言太史"
-    <<"翊枫咸"<<"春竹扶"<<"中震辞"<<"哲深"<<"缑伟懋"<<"白天萧"<<"完玉宇"<<"牟泽语"<<"佩华晖"<<"面希文"<<"战云鸣"
-    <<"台学中"<<"白鸿才"<<"完康适"<<"南门瑞"<<"渊滕伟"<<"才戴金"<<"鑫陶"<<"绍钧夜"<<"元纬"<<"面令飒"<<"萱苟惜"
-    <<"芹测访冬"<<"清玥昕"<<"隗暮晨"<<"巫马"<<"芷天渠"<<"凌双"<<"袁凌菡"<<"鄂隐吟"<<"启墨深"<<"鄂德明"<<"鄂涵柔";
+    m_lNames<<"隗聪洛"<<"令访梅"<<"启沛柔";
+//"闾韵菲"<<"笪怀梦"<<"二初之"<<"仵云烟"<<"鄂绿柳"<<"令雁竹"<<"光山云"
+//    <<"谯涵"<<"荷希辰"<<"希言"<<"可馨鄂"<<"初筠遥"<<"紫筠"<<"盘曼梦"<<"有从"<<"萍光振"<<"国贝乐"<<"安盘浔"
+//  <<"剑蓟冷"<<"旋盖如"<<"凡谯元"<<"瑶之"<<"语达奚"<<"傲夏"<<"邓映"<<"珍桓灵"<<"兰袁允"<<"颜璎珞"<<"谌靖琪"
+// <<"华问薇"<<"养静丝"<<"兔昊天"<<"厉怀薇"<<"勾云鸣"<<"卞春竹"<<"雅奇月"<<"苗紫霜"<<"师宁"<<"曦查平"<<"柳柱"
+//<<"冬莲潭"<<"墨辰雅"<<"令仪"<<"合诗菲"<<"养新"<<"霜万醉"<<"柔养向"<<"南孛幼"<<"枫常青"<<"芙黎少"<<"轩太叔"
+//<<"伯谌"<<"丹烟单"<<"书琴"<<"查修"<<"明苗海"<<"诺闲承"<<"辞承宣"<<"戴深子"<<"清明修"<<"清容爵"<<"缑德逸"
+//<<"南门睿"<<"诚严墨"<<"然太泽"<<"宇公坚"<<"灼光完"<<"慕寒"<<"牟浩壤"<<"台兴"<<"发牟同"<<"光百思"<<"智南"
+//<<"门辰扬"<<"戴锦"<<"宇皮景"<<"瑜测光"<<"明晏德"<<"昌陕彬"<<"庆杂弘"<<"白少轩"<<"白振"<<"学清尚"<<"江仲"
+//<<"修真"<<"賴英虑"<<"暴凯风"<<"弦房辰"<<"铭笪"<<"秋瑶"<<"测正青令"<<"书文测"<<"冠贤璎"<<"元瑶"<<"桓白"<<"凝越宛"
+//<<"云仵"<<"诗珊"<<"孝水蕊"<<"越访曼"<<"荣曼"<<"青焱"<<"安兰有"<<"又旋瑶"<<"嘉铭"<<"志养又"<<"萱师"<<"笑卉"
+//<<"颜冷荷颜"<<"恨琴雅"<<"静安费"<<"灵蕊"<<"颜若"<<"琳费祁"<<"煊骆"<<"碧巧"<<"卞斯民"<<"陕涵采"<<"闲妙"<<"蕊潭"
+//<<"冬萱晏"<<"沛海姚"<<"英武"<<"台国源"<<"曳旭"<<"木仲"<<"鸿朗施黎"<<"枫牟英"<<"逸杂文"<<"石仲"<<"玉羽"<<"东方运"
+//<<"杰南"<<"宫启"<<"明缑雅"<<"枫皮亦"<<"翌皮"<<"鹤轩"<<"面杰玮"<<"印起伯"<<"晚明"<<"桂紫"<<"茵桓"<<"春蕾"
+//<<"谯修贤"<<"鄂冥华"<<"武慕玉"<<"房碧凡"<<"易之薇"<<"令雨安"<<"遥千"<<"凡二"<<"傲萱孝"<<"安瑶"<<"测恨珍"
+//<<"易振凯"<<"巫马平文"<<"渠景明"<<"盖灼光"<<"隗思"<<"霆清"<<"容爵巫"<<"马秋莉"<<"易静卉"<<"武水莲"<<"景醉梅"
+//<<"隗翠夏"<<"阙忆曼"<<"仵晓丝"<<"阙彬"<<"郁隗怀"<<"绿袁梦"<<"蕾花修"<<"真微生"<<"雪柔测"<<"嘉微盘"<<"幼青苟"
+//<<"博延荣"<<"凌凡希"<<"向菱测"<<"思辰景"<<"半槐房"<<"蒹葭焱"<<"奇月"<<"袁修尧"<<"希雁"<<"柳易问"<<"孟初"<<"柳娜"
+//<<"芸灀"<<"罗冰绿"<<"黎韵洁"<<"繁绮烟"<<"苗元勋"<<"许念汐"<<"卞香凝"<<"孟飞"<<"菱苗"<<"横波韦"<<"耘志"<<"潭翠柏"
+//<<"昊天云"<<"潭迎梅罗"<<"凌玉单"<<"怜雁潭"<<"易蝶"<<"颜霄"<<"翎卞泽"<<"语解楚"<<"薰沐兴"<<"为陕紫"<<"夏闲盼"
+//<<"玉闲史"<<"宇罗睿"<<"德师小"<<"蕊师"<<"凌文芥"<<"以松孛"<<"新丹谌"<<"怜岚妳"<<"珏麟单"<<"又珊沐"<<"雅枫万"
+//<<"书容闲"<<"妙蓝单"<<"飞柏影"<<"慕山昊"<<"修博飞"<<"之卉静"<<"巧之"<<"黎春南"<<"合辰"<<"岩黎泰"<<"诚太"<<"史寒"
+//<<"寻黑"<<"玉坤陕"<<"言宇贡"<<"无麟缑"<<"和昶缑"<<"乐生陕"<<"皓君瑶"<<"昆颉"<<"晏承"<<"辰宁茂"<<"学夜"<<"元魁晏"
+//<<"咏志宿"<<"展阳战司"<<"羽黑鸿"<<"信公仲"<<"温韦"<<"夜博"<<"瀚賴尧"<<"宸戴尧"<<"墨晚承"<<"澈施少"<<"言太史"
+//<<"翊枫咸"<<"春竹扶"<<"中震辞"<<"哲深"<<"缑伟懋"<<"白天萧"<<"完玉宇"<<"牟泽语"<<"佩华晖"<<"面希文"<<"战云鸣"
+//<<"台学中"<<"白鸿才"<<"完康适"<<"南门瑞"<<"渊滕伟"<<"才戴金"<<"鑫陶"<<"绍钧夜"<<"元纬"<<"面令飒"<<"萱苟惜"
+//<<"芹测访冬"<<"清玥昕"<<"隗暮晨"<<"巫马"<<"芷天渠"<<"凌双"<<"袁凌菡"<<"鄂隐吟"<<"启墨深"<<"鄂德明"<<"鄂涵柔"
 
     updateTable();
     UpdateTable();
     init_tableWidget_4();
+    updateTableWidget4();
+
+    //获取页数
+    QStringList mList;
+    mList<<"30"<<"60"<<"100"<<"150";
+    ui->comboBox->addItems(mList);
+    PageMaxData=ui->comboBox->currentText().toUInt();
+
+
+    currentPage=1;
+    updataPage();
+    firstPage();
 
 }
 
@@ -307,7 +322,7 @@ void UIBasePlatformFrame::initForm()
         showRightInfo();
     });
 
-
+//    init_tableWidget_4();
 }
 
 void UIBasePlatformFrame::buttonClick()
@@ -351,6 +366,7 @@ void UIBasePlatformFrame::on_treeWidget_itemClicked(QTreeWidgetItem* item,int co
     else if(curItem_text=="授权备案")
     {
         ui->stackedWidget_2->setCurrentIndex(1);
+
     }
     else if(curItem_text=="人员准入")
         {
@@ -779,8 +795,8 @@ void UIBasePlatformFrame::updateTable()
 
 void UIBasePlatformFrame::init_tableWidget_4()
 {
-    ui->tableWidget_4->clearContents();
-    ui->tableWidget_4->clear();
+//    ui->tableWidget_4->clearContents();
+//    ui->tableWidget_4->clear();
     ui->tableWidget_4->setSpan(0, 0, 2, 1);//序号
     ui->tableWidget_4->setSpan(0, 1, 2, 1);//ID
     ui->tableWidget_4->setSpan(0, 2, 2, 1);//组别码
@@ -849,9 +865,9 @@ void UIBasePlatformFrame::init_tableWidget_4()
     ui->tableWidget_4->horizontalHeader()->setVisible(false); // 隐藏行表头
     ui->tableWidget_4->verticalHeader()->setVisible(false);   // 隐藏列表头
     ui->tableWidget_4->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);    //x先自适应宽度
-    ui->tableWidget_4->horizontalHeader()->setSectionResizeMode(0, QHeaderView::ResizeToContents);     //然后设置要根据内容使用宽度的列
+    ui->tableWidget_4->horizontalHeader()->setSectionResizeMode(8, QHeaderView::ResizeToContents);     //然后设置要根据内容使用宽度的列
     ui->tableWidget_4->setAlternatingRowColors(true);
-
+    ui->tableWidget_4->horizontalHeader()->setSectionResizeMode(13, QHeaderView::ResizeToContents);//0表示列号
 }
 
 void UIBasePlatformFrame::on_btn_add_clicked()
@@ -1100,7 +1116,7 @@ void UIBasePlatformFrame::showRightInfo()
         ui->label_phone->setText(ui->tableWidget_2->item(i,7)->text());
         ui->label_address->setText(ui->tableWidget_2->item(i,8)->text());
     }
-};
+}
 
 void UIBasePlatformFrame::on_pushButton_clicked()
 {
@@ -1109,9 +1125,8 @@ void UIBasePlatformFrame::on_pushButton_clicked()
     {
         int id=ui->tableWidget_2->item(i,1)->text().toUInt();
         m_ptrSonSql->delUser(id);
-
-         QMessageBox::information(nullptr,"信息","删除成功！");
-         UpdateTable();
+        QMessageBox::information(nullptr,"信息","删除成功！");
+        UpdateTable();
     }
 }
 
@@ -1151,23 +1166,14 @@ void UIBasePlatformFrame::on_tableWidget_2_itemDoubleClicked(QTableWidgetItem *i
 //          info.phone=ui->tableWidget_2->item(i,7)->text();
 //          info.address=ui->tableWidget_2->item(i,8)->text();
 //          m_dlgAddUser.setType(false,info);
-
      userWinDialog.exec();
-
-
 // this->hide();
-
-
 //      }
 //      else
 //      {
 //  //        QMessageBox::information(nullptr,"警告！","没有选中数据！");
 //      }
 //      UpdateTable();
-
-
-
-
 }
 
 //2022.12.28更改
@@ -1175,10 +1181,13 @@ int generateRandomNumber()
 {
     qsrand(QTime(0,0,0).secsTo(QTime::currentTime()));
     int test =qrand()%10;
+    qDebug()<<test;
     return test;
 }
+//模拟数据
 void UIBasePlatformFrame::on_pushButton_4_clicked()
 {
+
     QList<CreInfo> l;
 
     for(int i=0;i<m_lNames.size();i++)
@@ -1191,8 +1200,6 @@ void UIBasePlatformFrame::on_pushButton_4_clicked()
         {
            info.leader_politics="团员";
            info.leader_gender="男";
-
-
         };
         if(i%2)
         {
@@ -1204,17 +1211,17 @@ void UIBasePlatformFrame::on_pushButton_4_clicked()
         {
             info.leader_politics="党员";
             info.leader_gender="女";
-
-
-
-        };
+        }else
+        {
+            info.leader_politics="团员";
+            info.leader_gender="男";
+        }
         info.leader_unit="中国融通资源开发有限公司";
         info.leader_phone="12999999"+QString::number(i);
 
-
+        info.deputy_name=m_lNames[i];
         if(i%3)
         {
-           info.deputy_name=m_lNames[i];
            info.deputy_politics="团员";
            info.deputy_gender="女";
            info.deputy_phone="138888"+QString::number(i);
@@ -1222,65 +1229,312 @@ void UIBasePlatformFrame::on_pushButton_4_clicked()
         };
         if(i%2)
         {
-            info.deputy_name=m_lNames[i];
             info.deputy_politics="党员";
             info.deputy_gender="男";
             info.deputy_phone="138888"+QString::number(i);
         };
         if(i%7)
         {
-            info.deputy_name=m_lNames[i];
             info.deputy_politics="群众";
             info.deputy_gender="女";
             info.deputy_phone="138888"+QString::number(i);
-        };
+        }
+        else
+        {
+            info.deputy_politics="团员";
+            info.deputy_gender="男";
+            info.deputy_phone="138888"+QString::number(i);
+        }
         info.deputy_unit="中国融通资源开发有限公司";
-        info.staffing=generateRandomNumber();
+        int temp=generateRandomNumber();
+        info.staffing=QString::number(temp);
 
         l.append(info);
    }
     m_prtCreSql->addPer(l);
-//    updateTableWidget4();
-}
+    updateTableWidget4();
+    updataPage();
 
+}
+//更新表数据
 void UIBasePlatformFrame::updateTableWidget4()
 {
+
     auto cnt =m_prtCreSql->getPerCnt();
     ui->label_48->setText(QString("总数:%1").arg(cnt));
+    qDebug()<<cnt;
     QList<CreInfo> lPer=m_prtCreSql->getPagePer(0,cnt);
-    ui->tableWidget_4->setRowCount(cnt);
+    ui->tableWidget_4->setRowCount(cnt+2);
     for(int i=0; i<lPer.size();i++)
     {
         int j=i+2;
-//        arg(info.group_id).
-//        arg(info.group_name).
-//        arg(info.leader_name).
-//        arg(info.leader_gender).
-//        arg(info.leader_politics).
-//        arg(info.leader_phone).
-//        arg(info.leader_unit).
-//        arg(info.deputy_name).
-//        arg(info.deputy_gender).
-//        arg(info.deputy_politics).
-//        arg(info.deputy_phone).
-//        arg(info.deputy_unit).
-//        arg(info.staffing).
+
+        ui->tableWidget_4->setItem(j,0,new QTableWidgetItem(QString::number(i+1)));
+        ui->tableWidget_4->setItem(j,1,new QTableWidgetItem(QString::number(lPer[i].id)));
+
+        ui->tableWidget_4->setItem(j,2,new QTableWidgetItem(lPer[i].group_id));
+        ui->tableWidget_4->setItem(j,3,new QTableWidgetItem(lPer[i].group_name));
+
+        ui->tableWidget_4->setItem(j,4,new QTableWidgetItem(lPer[i].leader_name));
+        ui->tableWidget_4->setItem(j,5,new QTableWidgetItem(lPer[i].leader_gender));
+        ui->tableWidget_4->setItem(j,6,new QTableWidgetItem(lPer[i].leader_politics));
+        ui->tableWidget_4->setItem(j,7,new QTableWidgetItem(lPer[i].leader_phone));
+        ui->tableWidget_4->setItem(j,8,new QTableWidgetItem(lPer[i].leader_unit));
+
+        ui->tableWidget_4->setItem(j,9,new QTableWidgetItem(lPer[i].deputy_name));
+        ui->tableWidget_4->setItem(j,10,new QTableWidgetItem(lPer[i].deputy_gender));
+        ui->tableWidget_4->setItem(j,11,new QTableWidgetItem(lPer[i].deputy_politics));
+        ui->tableWidget_4->setItem(j,12,new QTableWidgetItem(lPer[i].deputy_phone));
+        ui->tableWidget_4->setItem(j,13,new QTableWidgetItem(lPer[i].deputy_unit));
+
+        ui->tableWidget_4->setItem(j,14,new QTableWidgetItem(lPer[i].staffing));
+        ui->tableWidget_4->setItem(j,15,new QTableWidgetItem(lPer[i].remark));
+    }
+}
+//清空表按钮
+void UIBasePlatformFrame::on_pushButton_5_clicked()
+{
+    ui->tableWidget_4->setRowCount(3);
+    ui->tableWidget_4->setColumnCount(16);
+    auto cnt =m_prtCreSql->getPerCnt();
+    ui->label_48->setText(QString("总数:%1").arg(cnt));
+    qDebug()<<cnt;
+    QList<CreInfo> lPer=m_prtCreSql->getPagePer(0,cnt);
+    for(int i=0; i<lPer.size();i++)
+    {
+        int j=i+2;
+
+        ui->tableWidget_4->setItem(j,0,new QTableWidgetItem());
+        ui->tableWidget_4->setItem(j,1,new QTableWidgetItem());
+
+        ui->tableWidget_4->setItem(j,2,new QTableWidgetItem());
+        ui->tableWidget_4->setItem(j,3,new QTableWidgetItem());
+
+        ui->tableWidget_4->setItem(j,4,new QTableWidgetItem());
+        ui->tableWidget_4->setItem(j,5,new QTableWidgetItem());
+        ui->tableWidget_4->setItem(j,6,new QTableWidgetItem());
+        ui->tableWidget_4->setItem(j,7,new QTableWidgetItem());
+        ui->tableWidget_4->setItem(j,8,new QTableWidgetItem());
+
+        ui->tableWidget_4->setItem(j,9,new QTableWidgetItem());
+        ui->tableWidget_4->setItem(j,10,new QTableWidgetItem());
+        ui->tableWidget_4->setItem(j,11,new QTableWidgetItem());
+        ui->tableWidget_4->setItem(j,12,new QTableWidgetItem());
+        ui->tableWidget_4->setItem(j,13,new QTableWidgetItem());
+
+        ui->tableWidget_4->setItem(j,14,new QTableWidgetItem());
+        ui->tableWidget_4->setItem(j,15,new QTableWidgetItem());
+    }
+    m_prtCreSql->clearPerTable();
+    auto cnt1 =m_prtCreSql->getPerCnt();
+    ui->label_48->setText(QString("总数:%1").arg(cnt1));
+    init_tableWidget_4();
+//    currentPage=0;
+//    updataPage();
+    ui->label_49->setText(QString("0/0"));
+}
 
 
-//        arg(info.remark);
-        ui->tableWidget->setItem(j,0,new QTableWidgetItem(QString::number(i)));
-        ui->tableWidget->setItem(j,1,new QTableWidgetItem(QString::number(lPer[i].id)));
-        ui->tableWidget->setItem(j,2,new QTableWidgetItem(lPer[i].group_id));
-        ui->tableWidget->setItem(j,3,new QTableWidgetItem(lPer[i].group_name));
-        ui->tableWidget->setItem(j,4,new QTableWidgetItem(lPer[i].leader_gender));
-        ui->tableWidget->setItem(j,5,new QTableWidgetItem(lPer[i].leader_politics));
-        ui->tableWidget->setItem(j,6,new QTableWidgetItem(lPer[i].leader_phone));
-        ui->tableWidget->setItem(j,7,new QTableWidgetItem(lPer[i].leader_unit));
-//        ui->tableWidget->setItem(j,8,new QTableWidgetItem(lPer[i].email));
+
+//2022.12.29更改
+//新增组别和人员
+void UIBasePlatformFrame::on_pushButton_7_clicked()
+{
+    //需要界面
+
+    m_dlgAddCre.setType(true);
+    m_dlgAddCre.exec();//模态窗口
+    updateTableWidget4();
+}
+//删除组别和人员
+void UIBasePlatformFrame::on_pushButton_9_clicked()
+{
+    int i=ui->tableWidget_4->currentRow();
+    if(i>=2)
+    {
+        int id=ui->tableWidget_4->item(i,1)->text().toUInt();
+        m_prtCreSql->delPer(id);
+        updateTableWidget4();
+        QMessageBox::information(nullptr,"信息","删除成功！");
+    }
+    else
+    {
+        QMessageBox::information(nullptr,"警告！","没有选中数据！");
+    }
+}
+//基础资源/人员综合管理/授权备案（查询按钮功能）
+void UIBasePlatformFrame::on_pushButton_6_clicked()
+{
+    DBHelper* helper = DBHelper::getInstance();
+    helper->createConnection();
+
+    QList<CreInfo> c;
+    QString queryParam=ui->lineEdit_2->text();
+    if(queryParam=="")
+    {
+        QMessageBox::information(nullptr,"警告！","搜索框为空！");
+    }else
+    {
+        updateTableWidget4();
+//        QSqlQuery query(QString("select * from creditinfo"), helper->db);
+//        query.exec();
+//        while (query.next())
+//        {
+//            qDebug() << query.value(0).toInt();
+//        }
+
+
+        c=m_prtCreSql->searchByName(queryParam);
+        TianWidget4(c);
     }
 
 
+
+
+
+
 }
+//找到以后向表中填数据
+void UIBasePlatformFrame::TianWidget4(QList<CreInfo> c)
+{
+    int index=0;
+    for(int i=0;i<c.size();i++)
+    {
+        int j=i+2;
+        index++;
+        ui->tableWidget_4->setItem(j,0,new QTableWidgetItem(QString::number(i+1)));
+        ui->tableWidget_4->setItem(j,1,new QTableWidgetItem(QString::number(c[i].id)));
+
+        ui->tableWidget_4->setItem(j,2,new QTableWidgetItem(c[i].group_id));
+        ui->tableWidget_4->setItem(j,3,new QTableWidgetItem(c[i].group_name));
+
+        ui->tableWidget_4->setItem(j,4,new QTableWidgetItem(c[i].leader_name));
+        ui->tableWidget_4->setItem(j,5,new QTableWidgetItem(c[i].leader_gender));
+        ui->tableWidget_4->setItem(j,6,new QTableWidgetItem(c[i].leader_politics));
+        ui->tableWidget_4->setItem(j,7,new QTableWidgetItem(c[i].leader_phone));
+        ui->tableWidget_4->setItem(j,8,new QTableWidgetItem(c[i].leader_unit));
+
+        ui->tableWidget_4->setItem(j,9,new QTableWidgetItem(c[i].deputy_name));
+        ui->tableWidget_4->setItem(j,10,new QTableWidgetItem(c[i].deputy_gender));
+        ui->tableWidget_4->setItem(j,11,new QTableWidgetItem(c[i].deputy_politics));
+        ui->tableWidget_4->setItem(j,12,new QTableWidgetItem(c[i].deputy_phone));
+        ui->tableWidget_4->setItem(j,13,new QTableWidgetItem(c[i].deputy_unit));
+
+        ui->tableWidget_4->setItem(j,14,new QTableWidgetItem(c[i].staffing));
+        ui->tableWidget_4->setItem(j,15,new QTableWidgetItem(c[i].remark));
+    }
+    ui->tableWidget_4->setRowCount(index+2);
+}
+//搜索框重置
+void UIBasePlatformFrame::on_pushButton_10_clicked()
+{
+    updateTableWidget4();
+    ui->lineEdit_2->setText("");
+}
+//修改组内人员信息
+void UIBasePlatformFrame::on_pushButton_8_clicked()
+{
+    CreInfo info;
+    int i=ui->tableWidget_4->currentRow();
+    if(i>=2)
+    {
+//        info.id=ui->tableWidget->item(i,1)->text().toUInt();
+//        info.name=ui->tableWidget->item(i,2)->text();
+//        info.gender=ui->tableWidget->item(i,3)->text();
+//        info.age=ui->tableWidget->item(i,4)->text().toUInt();
+//        info.school=ui->tableWidget->item(i,5)->text();
+//        info.time=ui->tableWidget->item(i,6)->text();
+//        info.phone=ui->tableWidget->item(i,7)->text();
+//        info.email=ui->tableWidget->item(i,8)->text();
+        m_dlgAddCre.setType(false,info);
+        m_dlgAddCre.exec();
+    }
+    else
+    {
+        QMessageBox::information(nullptr,"警告！","没有选中数据！");
+    }
+    updateTableWidget4();
+}
+
+//2022.12.30
+//设置分页
+//更新页数
+void UIBasePlatformFrame::updataPage()
+{
+    auto cnt =m_prtCreSql->getPerCnt();
+//    if (cnt==0)
+//    {
+////        pageSum=0;
+////        currentPage=0;
+//    }
+    if (cnt <= PageMaxData) {
+        pageSum = 1;
+    }
+    if ((cnt % PageMaxData) == 0) {
+        pageSum = cnt / PageMaxData;
+    }
+    else {
+        pageSum = (cnt / PageMaxData) + 1;
+    }
+    qDebug()<<"cnt"<<cnt;
+    qDebug()<<"PageMaxData"<<PageMaxData;
+    qDebug()<<"currentPage"<<currentPage;
+    qDebug()<<"pageSum"<<pageSum;
+    ui->label_49->setText(QString("%1/%2").arg(currentPage).arg(pageSum));
+}
+//首页
+void UIBasePlatformFrame::firstPage()
+{
+    int first=1;
+    int num=first*PageMaxData;
+    auto crePer=m_prtCreSql->PagePer(num);
+    TianWidget4(crePer);
+    updataPage();
+}
+void UIBasePlatformFrame::on_pushButton_13_clicked()
+{
+    firstPage();
+}
+//上一页
+void UIBasePlatformFrame::on_pushButton_11_clicked()
+{
+
+}
+//下一页
+void UIBasePlatformFrame::on_pushButton_12_clicked()
+{
+
+}
+//尾页
+void UIBasePlatformFrame::on_pushButton_14_clicked()
+{
+
+}
+//跳转
+void UIBasePlatformFrame::on_pushButton_15_clicked()
+{
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

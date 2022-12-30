@@ -5,7 +5,7 @@
 #include<QFile>
 #include<QLabel>
 #include<QListWidget>
-
+//#include<QChartView>
 DataTransferDialog::DataTransferDialog(QWidget *parent) :
     QDialog(parent),
     ui(new Ui::DataTransferDialog)
@@ -13,18 +13,45 @@ DataTransferDialog::DataTransferDialog(QWidget *parent) :
     ui->setupUi(this);
     this->setProperty("canMove", true);
 
-    ui->listWidget->setViewMode(QListWidget::IconMode);  // 设置内容为图片
-    ui->listWidget->setIconSize(QSize(50, 50));          // 设置图片的大小
-    ui->listWidget->setSpacing(10);                      // 设置每个item之间的间隔大小
-    ui->listWidget->setMovement(QListWidget::Static);    // 设置每个item不可拖动
-//    ui->listWidget->setMaximumHeight(170);
-    for (int i = 0; i < 30; i++) {
-        QListWidgetItem* item = new QListWidgetItem;
-        item->setText(QString("app%1").arg(QString::number(i)));    // item文字
-        item->setIcon(QIcon(":/image/dataTransfer.png"));      // item图片
-        item->setSizeHint(QSize(50, 70));   // item大小
-        ui->listWidget->addItem(item);       // 增加item
-    }
+////    QHBoxLayout* hboxLayout = new QHBoxLayout();
+//    for(int j=1;j<3;j++)
+//    {
+//        for (int i = 0; i < 3; i++) {
+//            QListWidgetItem* item = new QListWidgetItem;
+//            item->setText(QString("app%1").arg(QString::number(i)));    // item文字
+//            item->setIcon(QIcon(":/image/dataTransfer.png"));      // item图片
+//            item->setSizeHint(QSize(50, 70));   // item大小
+//            QWidget * widget=new QWidget();
+
+////            ui->gridLayout_2->addWidget(item, j, i);
+//        }
+//    }
+
+
+
+
+
+
+
+
+
+
+//    ui->listWidget->setViewMode(QListWidget::IconMode);  // 设置内容为图片
+//    ui->listWidget->setIconSize(QSize(50, 50));          // 设置图片的大小
+//    ui->listWidget->setSpacing(10);                      // 设置每个item之间的间隔大小
+//    ui->listWidget->setMovement(QListWidget::Static);    // 设置每个item不可拖动
+////    ui->listWidget->setMaximumHeight(170);
+//    for (int i = 0; i < 6; i++) {
+//        QListWidgetItem* item = new QListWidgetItem;
+//        item->setText(QString("app%1").arg(QString::number(i)));    // item文字
+//        item->setIcon(QIcon(":/image/dataTransfer.png"));      // item图片
+//        item->setSizeHint(QSize(50, 70));   // item大小
+//        QHBoxLayout* hboxLayout = new QHBoxLayout();
+
+//        hboxLayout->addWidget(item)
+//        ui->listWidget->setLayout(hboxLayout);
+//        ui->listWidget->addItem(item);       // 增加item
+//    }
 //    QList<QPushButton *> list_button = this->ui->groupBox->findChildren<QPushButton *>();
 //    foreach (QPushButton *btn, list_button) {
 //        btn->setProperty("class","trayButton");
